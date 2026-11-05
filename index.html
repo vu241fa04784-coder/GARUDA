@@ -7,235 +7,56 @@
 <title>THE GARUDA NEWS - Poster Maker</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#eef1f5;color:#182235}
+header{background:#101d35;color:white;padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:43px;height:43px;object-fit:contain;background:white;border-radius:5px}
+.brand h1{font-size:19px;letter-spacing:1px}
+.brand p{color:#c5cedb;font-size:10px;margin-top:4px;letter-spacing:1.5px}
+main{max-width:1250px;margin:auto;padding:20px}
+.format-tabs{display:flex;gap:12px;margin-bottom:20px}
+.format-tabs button{flex:1;padding:15px;border:2px solid #d7dce5;border-radius:9px;background:white;font-weight:bold;cursor:pointer;color:#26364e}
+.format-tabs button.active{background:#d92732;color:white;border-color:#d92732}
+.layout{display:grid;grid-template-columns:370px minmax(0,1fr);gap:25px;align-items:start}
+.editor{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 20px #14213a12}
+.editor h2{font-size:20px;margin-bottom:18px}
+.group{margin-bottom:17px}
+.group label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#344158}
+input[type="text"],textarea{width:100%;padding:11px;border:1px solid #d7dce5;border-radius:7px;font-size:14px;outline:none;font-family:inherit}
+textarea{min-height:110px;resize:vertical;line-height:1.6}
+input:focus,textarea:focus{border-color:#d92732}
+input[type="file"]{width:100%;font-size:12px}
+input[type="range"]{width:100%;accent-color:#d92732}
+.range-value{font-size:12px;color:#d92732;font-weight:bold;margin-top:4px}
+.hint{color:#7d8797;font-size:11px;margin-top:5px}
+.button{border:none;padding:12px 15px;border-radius:7px;cursor:pointer;font-weight:700;font-size:13px}
+.primary{background:#d92732;color:white}
+.secondary{background:#e9edf4;color:#24334b}
+.button-row,.actions{display:flex;gap:10px;margin-top:14px}
+.button-row button,.actions button{flex:1}
+.actions button{padding:14px 8px}
+.preview-area{display:flex;flex-direction:column;align-items:center}
+.preview-title{width:100%;font-size:16px;font-weight:bold;margin-bottom:12px}
+.poster-frame{width:min(100%,450px);background:white;overflow:hidden;box-shadow:0 8px 35px #14213a30;border-radius:4px}
+.poster-frame.story{aspect-ratio:9/16}
+.poster-frame.feed{aspect-ratio:3/4}
+.poster-frame canvas{width:100%;height:100%;display:block}
+.editor-panel{display:none}
+.editor-panel.active{display:block}
+.preview-panel{display:none}
+.preview-panel.active{display:flex;width:100%;flex-direction:column;align-items:center}
+@media(max-width:850px){
+.layout{grid-template-columns:1fr}
+.editor{order:2}
+.preview-panel{order:1}
+.poster-frame{width:min(100%,420px)}
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background: #eef1f5;
-    color: #182235;
-}
-
-header {
-    background: #101d35;
-    color: white;
-    padding: 17px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.brand img {
-    width: 43px;
-    height: 43px;
-    object-fit: contain;
-    background: white;
-    border-radius: 5px;
-}
-
-.brand h1 {
-    font-size: 19px;
-    letter-spacing: 1px;
-}
-
-.brand p {
-    color: #c5cedb;
-    font-size: 10px;
-    margin-top: 4px;
-    letter-spacing: 1.5px;
-}
-
-main {
-    max-width: 1250px;
-    margin: auto;
-    padding: 20px;
-}
-
-.layout {
-    display: grid;
-    grid-template-columns: 370px minmax(0, 1fr);
-    gap: 25px;
-    align-items: start;
-}
-
-.editor {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px #14213a12;
-}
-
-.editor h2 {
-    font-size: 20px;
-    margin-bottom: 18px;
-}
-
-.group {
-    margin-bottom: 17px;
-}
-
-.group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 7px;
-    color: #344158;
-}
-
-input[type="text"],
-textarea {
-    width: 100%;
-    padding: 11px;
-    border: 1px solid #d7dce5;
-    border-radius: 7px;
-    font-size: 14px;
-    outline: none;
-    font-family: inherit;
-}
-
-textarea {
-    min-height: 130px;
-    resize: vertical;
-    line-height: 1.6;
-}
-
-input:focus,
-textarea:focus {
-    border-color: #d92732;
-}
-
-input[type="file"] {
-    width: 100%;
-    font-size: 12px;
-}
-
-input[type="range"] {
-    width: 100%;
-    accent-color: #d92732;
-}
-
-.range-value {
-    font-size: 12px;
-    color: #d92732;
-    font-weight: bold;
-    margin-top: 4px;
-}
-
-.hint {
-    color: #7d8797;
-    font-size: 11px;
-    margin-top: 5px;
-}
-
-.button {
-    border: none;
-    padding: 12px 15px;
-    border-radius: 7px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-.primary {
-    background: #d92732;
-    color: white;
-}
-
-.secondary {
-    background: #e9edf4;
-    color: #24334b;
-}
-
-.button-row {
-    display: flex;
-    gap: 9px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-}
-
-.button-row button {
-    flex: 1;
-}
-
-.actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.actions button {
-    flex: 1;
-    padding: 14px 8px;
-}
-
-.preview-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.preview-title {
-    width: 100%;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-
-.poster-frame {
-    width: min(100%, 450px);
-    aspect-ratio: 9 / 16;
-    background: white;
-    overflow: hidden;
-    box-shadow: 0 8px 35px #14213a30;
-    border-radius: 4px;
-}
-
-#posterCanvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-@media(max-width:850px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-
-    .editor {
-        order: 2;
-    }
-
-    .preview-area {
-        order: 1;
-    }
-
-    .poster-frame {
-        width: min(100%, 420px);
-    }
-}
-
-@media(max-width:480px) {
-    main {
-        padding: 12px;
-    }
-
-    header {
-        padding: 13px;
-    }
-
-    .brand h1 {
-        font-size: 16px;
-    }
+@media(max-width:480px){
+main{padding:12px}
+header{padding:13px}
+.brand h1{font-size:16px}
+.format-tabs button{font-size:12px;padding:12px 5px}
 }
 </style>
 </head>
@@ -250,87 +71,161 @@ input[type="range"] {
             <p>YOUR NEWS. YOUR VOICE.</p>
         </div>
     </div>
-    <div style="font-size:11px;color:#d9e1ee">
-        POSTER MAKER
-    </div>
+    <div style="font-size:11px;color:#d9e1ee">POSTER MAKER</div>
 </header>
 
 <main>
+
+<div class="format-tabs">
+    <button id="storyTab" class="active">Instagram Story 9:16</button>
+    <button id="feedTab">Instagram Feed 3:4</button>
+</div>
+
 <div class="layout">
 
 <section class="editor">
 
-    <h2>Poster Editor</h2>
+    <!-- STORY EDITOR -->
+    <div id="storyEditor" class="editor-panel active">
+        <h2>Story Poster Editor</h2>
 
-    <div class="group">
-        <label>Upload News Photo</label>
-        <input type="file" id="photoInput" accept="image/*">
+        <div class="group">
+            <label>Upload News Photo</label>
+            <input type="file" id="storyPhoto" accept="image/*">
+        </div>
+
+        <div class="group">
+            <label>Photo Zoom</label>
+            <input type="range" id="storyZoom" min="1" max="3" step="0.01" value="1">
+            <div class="range-value" id="storyZoomValue">1.00x</div>
+        </div>
+
+        <div class="group">
+            <label>Move Photo Left / Right</label>
+            <input type="range" id="storyCropX" min="-100" max="100" value="0">
+        </div>
+
+        <div class="group">
+            <label>Move Photo Up / Down</label>
+            <input type="range" id="storyCropY" min="-100" max="100" value="0">
+        </div>
+
+        <button class="button secondary" id="storyResetCrop" style="width:100%">Reset Crop</button>
+
+        <hr style="border:0;border-top:1px solid #e6e9ef;margin:19px 0">
+
+        <div class="group">
+            <label>Upload Garuda Logo (Optional)</label>
+            <input type="file" id="storyLogo" accept="image/*">
+        </div>
+
+        <div class="group">
+            <label>News Headline</label>
+            <textarea id="storyHeadline" rows="3">ఓటు హక్కును వినియోగించుకున్న అర్రిబోయిన రాంబాబు గారు</textarea>
+        </div>
+
+        <div class="group">
+            <label>News Description</label>
+            <textarea id="storyDescription">ప్రజాస్వామ్య పండుగలో భాగంగా డా. అర్రిబోయిన రాంబాబు గారు తమ అమూల్యమైన ఓటు హక్కును వినియోగించుకున్నారు. ప్రతి పౌరుడికి ఓటు హక్కు ఎంతో విలువైనది. దేశ భవిష్యత్తును, ప్రజాస్వామ్య వ్యవస్థను బలోపేతం చేయడంలో ప్రతి ఓటు కీలక పాత్ర పోషిస్తుంది.</textarea>
+            <p class="hint" id="storyCount">0 words</p>
+        </div>
+
+        <div class="group">
+            <label>Date and Edition</label>
+            <input type="text" id="storyDate" value="05 NOVEMBER 2026 | ANDHRA PRADESH">
+        </div>
+
+        <div class="button-row">
+            <button class="button secondary" id="storyResetText">Reset Text</button>
+            <button class="button secondary" id="storyRefresh">Refresh Preview</button>
+        </div>
+
+        <div class="actions">
+            <button class="button primary" id="storyDownload">Download Story</button>
+            <button class="button secondary" id="storyShare">Share</button>
+        </div>
+
+        <p class="hint">Story resolution: 1080 × 1920 pixels.</p>
+        <p class="hint">Photo 40% | News content 60%.</p>
     </div>
 
-    <div class="group">
-        <label>Photo Zoom</label>
-        <input type="range" id="zoom" min="1" max="3" step="0.01" value="1">
-        <div class="range-value" id="zoomValue">1.00x</div>
+    <!-- FEED EDITOR -->
+    <div id="feedEditor" class="editor-panel">
+        <h2>Feed Post Editor</h2>
+
+        <div class="group">
+            <label>Upload News Photo</label>
+            <input type="file" id="feedPhoto" accept="image/*">
+        </div>
+
+        <div class="group">
+            <label>Photo Zoom</label>
+            <input type="range" id="feedZoom" min="1" max="3" step="0.01" value="1">
+            <div class="range-value" id="feedZoomValue">1.00x</div>
+        </div>
+
+        <div class="group">
+            <label>Move Photo Left / Right</label>
+            <input type="range" id="feedCropX" min="-100" max="100" value="0">
+        </div>
+
+        <div class="group">
+            <label>Move Photo Up / Down</label>
+            <input type="range" id="feedCropY" min="-100" max="100" value="0">
+        </div>
+
+        <button class="button secondary" id="feedResetCrop" style="width:100%">Reset Crop</button>
+
+        <hr style="border:0;border-top:1px solid #e6e9ef;margin:19px 0">
+
+        <div class="group">
+            <label>Upload Garuda Logo (Optional)</label>
+            <input type="file" id="feedLogo" accept="image/*">
+        </div>
+
+        <div class="group">
+            <label>News Headline</label>
+            <textarea id="feedHeadline" rows="3">ఓటు హక్కును వినియోగించుకున్న అర్రిబోయిన రాంబాబు గారు</textarea>
+        </div>
+
+        <div class="group">
+            <label>News Description</label>
+            <textarea id="feedDescription">ప్రజాస్వామ్య పండుగలో భాగంగా డా. అర్రిబోయిన రాంబాబు గారు తమ అమూల్యమైన ఓటు హక్కును వినియోగించుకున్నారు. ప్రతి పౌరుడికి ఓటు హక్కు ఎంతో విలువైనది. దేశ భవిష్యత్తును, ప్రజాస్వామ్య వ్యవస్థను బలోపేతం చేయడంలో ప్రతి ఓటు కీలక పాత్ర పోషిస్తుంది.</textarea>
+            <p class="hint" id="feedCount">0 words</p>
+        </div>
+
+        <div class="group">
+            <label>Date and Edition</label>
+            <input type="text" id="feedDate" value="05 NOVEMBER 2026 | ANDHRA PRADESH">
+        </div>
+
+        <div class="button-row">
+            <button class="button secondary" id="feedResetText">Reset Text</button>
+            <button class="button secondary" id="feedRefresh">Refresh Preview</button>
+        </div>
+
+        <div class="actions">
+            <button class="button primary" id="feedDownload">Download Feed Post</button>
+            <button class="button secondary" id="feedShare">Share</button>
+        </div>
+
+        <p class="hint">Feed resolution: 1080 × 1440 pixels.</p>
+        <p class="hint">Photo 30% | News content 70%.</p>
     </div>
-
-    <div class="group">
-        <label>Move Photo Left / Right</label>
-        <input type="range" id="cropX" min="-100" max="100" value="0">
-    </div>
-
-    <div class="group">
-        <label>Move Photo Up / Down</label>
-        <input type="range" id="cropY" min="-100" max="100" value="0">
-    </div>
-
-    <button class="button secondary" id="resetCrop" style="width:100%">
-        Reset Crop
-    </button>
-
-    <hr style="border:0;border-top:1px solid #e6e9ef;margin:19px 0">
-
-    <div class="group">
-        <label>Upload Garuda Logo (Optional)</label>
-        <input type="file" id="logoInput" accept="image/*">
-        <p class="hint">Logo appears inside a red-bordered square on the photo.</p>
-    </div>
-
-    <div class="group">
-        <label>News Headline</label>
-        <textarea id="headline" rows="3" placeholder="Enter Telugu news headline">ఓటు హక్కును వినియోగించుకున్న అర్రిబోయిన రాంబాబు గారు</textarea>
-    </div>
-
-    <div class="group">
-        <label>News Description</label>
-        <textarea id="description" placeholder="Enter news description">ప్రజాస్వామ్య పండుగలో భాగంగా డా. అర్రిబోయిన రాంబాబు గారు తమ అమూల్యమైన ఓటు హక్కును వినియోగించుకున్నారు. ప్రతి పౌరుడికి ఓటు హక్కు ఎంతో విలువైనది. దేశ భవిష్యత్తును, ప్రజాస్వామ్య వ్యవస్థను బలోపేతం చేయడంలో ప్రతి ఓటు కీలక పాత్ర పోషిస్తుంది. బాధ్యతాయుతమైన పౌరుడిగా తన ఓటు హక్కును వినియోగించుకుని ప్రజాస్వామ్య స్ఫూర్తిని చాటారు.</textarea>
-        <p class="hint" id="wordCount">0 / 100 words</p>
-    </div>
-
-    <div class="group">
-        <label>Date and Edition</label>
-        <input type="text" id="dateText" value="05 NOVEMBER 2026 | ANDHRA PRADESH">
-    </div>
-
-    <div class="button-row">
-        <button class="button secondary" id="resetAll">Reset Text</button>
-        <button class="button secondary" id="refresh">Refresh Preview</button>
-    </div>
-
-    <div class="actions">
-        <button class="button primary" id="downloadBtn">Download PNG</button>
-        <button class="button secondary" id="shareBtn">Share Poster</button>
-    </div>
-
-    <p class="hint" style="margin-top:12px">
-        Final image resolution: 1080 × 1920 pixels.
-    </p>
 
 </section>
 
-<section class="preview-area">
-    <div class="preview-title">Live Poster Preview</div>
-    <div class="poster-frame">
-        <canvas id="posterCanvas" width="1080" height="1920"></canvas>
+<section id="storyPreview" class="preview-panel active">
+    <div class="preview-title">Story Live Preview (9:16)</div>
+    <div class="poster-frame story">
+        <canvas id="storyCanvas" width="1080" height="1920"></canvas>
+    </div>
+</section>
+
+<section id="feedPreview" class="preview-panel">
+    <div class="preview-title">Feed Live Preview (3:4)</div>
+    <div class="poster-frame feed">
+        <canvas id="feedCanvas" width="1080" height="1440"></canvas>
     </div>
 </section>
 
@@ -338,91 +233,61 @@ input[type="range"] {
 </main>
 
 <script>
-const canvas = document.getElementById("posterCanvas");
-const ctx = canvas.getContext("2d");
-
 const W = 1080;
-const H = 1920;
-
-const PHOTO_HEIGHT = 768;
-const CONTENT_START = 768;
-
-let photo = null;
-let logo = null;
-
-let cropZoom = 1;
-let cropX = 0;
-let cropY = 0;
-
 const $ = id => document.getElementById(id);
+
+const states = {
+    story: {
+        height: 1920,
+        photo: null,
+        logo: null,
+        zoom: 1,
+        cropX: 0,
+        cropY: 0
+    },
+    feed: {
+        height: 1440,
+        photo: null,
+        logo: null,
+        zoom: 1,
+        cropX: 0,
+        cropY: 0
+    }
+};
 
 function loadImage(file, callback) {
     const reader = new FileReader();
 
     reader.onload = () => {
-        const image = new Image();
-
-        image.onload = () => callback(image);
-        image.src = reader.result;
+        const img = new Image();
+        img.onload = () => callback(img);
+        img.src = reader.result;
     };
 
     reader.readAsDataURL(file);
 }
 
-$("photoInput").addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (!file) return;
+function switchFormat(format) {
+    $("storyTab").classList.toggle("active", format === "story");
+    $("feedTab").classList.toggle("active", format === "feed");
 
-    loadImage(file, img => {
-        photo = img;
-        renderPoster();
-    });
-});
+    $("storyEditor").classList.toggle("active", format === "story");
+    $("feedEditor").classList.toggle("active", format === "feed");
 
-$("logoInput").addEventListener("change", e => {
-    const file = e.target.files[0];
-    if (!file) return;
+    $("storyPreview").classList.toggle("active", format === "story");
+    $("feedPreview").classList.toggle("active", format === "feed");
 
-    loadImage(file, img => {
-        logo = img;
-        renderPoster();
-    });
-});
+    renderPoster(format);
+}
 
-$("zoom").addEventListener("input", e => {
-    cropZoom = Number(e.target.value);
-    $("zoomValue").textContent = cropZoom.toFixed(2) + "x";
-    renderPoster();
-});
-
-$("cropX").addEventListener("input", e => {
-    cropX = Number(e.target.value);
-    renderPoster();
-});
-
-$("cropY").addEventListener("input", e => {
-    cropY = Number(e.target.value);
-    renderPoster();
-});
-
-$("resetCrop").addEventListener("click", () => {
-    cropZoom = 1;
-    cropX = 0;
-    cropY = 0;
-
-    $("zoom").value = 1;
-    $("cropX").value = 0;
-    $("cropY").value = 0;
-    $("zoomValue").textContent = "1.00x";
-
-    renderPoster();
-});
+$("storyTab").addEventListener("click", () => switchFormat("story"));
+$("feedTab").addEventListener("click", () => switchFormat("feed"));
 
 function getWords(text) {
     return text.trim().split(/\s+/).filter(Boolean);
 }
 
-function wrapText(text, maxWidth, font) {
+function wrapText(ctx, text, maxWidth, font) {
     ctx.font = font;
 
     const words = getWords(text);
@@ -441,261 +306,234 @@ function wrapText(text, maxWidth, font) {
     }
 
     if (line) lines.push(line);
-
     return lines;
 }
 
-function drawCoverImage(img) {
-    const scale = Math.max(
-        W / img.width,
-        PHOTO_HEIGHT / img.height
-    ) * cropZoom;
+function drawPhoto(ctx, state, photoHeight) {
+    ctx.fillStyle = "#e8edf3";
+    ctx.fillRect(0, 0, W, photoHeight);
 
-    const drawW = img.width * scale;
-    const drawH = img.height * scale;
-
-    const overflowX = Math.max(0, drawW - W);
-    const overflowY = Math.max(0, drawH - PHOTO_HEIGHT);
-
-    const dx = (W - drawW) / 2 - (cropX / 100) * overflowX / 2;
-    const dy = (PHOTO_HEIGHT - drawH) / 2 - (cropY / 100) * overflowY / 2;
-
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(0, 0, W, PHOTO_HEIGHT);
-    ctx.clip();
-
-    ctx.drawImage(img, dx, dy, drawW, drawH);
-
-    ctx.restore();
-}
-
-function drawBrandBanner() {
-    ctx.save();
-
-    ctx.fillStyle = "#d71927";
-    ctx.beginPath();
-    ctx.moveTo(0, 45);
-    ctx.lineTo(205, 45);
-    ctx.lineTo(185, 88);
-    ctx.lineTo(0, 88);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = "#10213f";
-    ctx.beginPath();
-    ctx.moveTo(205, 45);
-    ctx.lineTo(355, 45);
-    ctx.lineTo(335, 88);
-    ctx.lineTo(185, 88);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 27px Arial";
-    ctx.textBaseline = "middle";
-    ctx.fillText("GARUDA", 18, 67);
-
-    ctx.font = "bold 25px Arial";
-    ctx.fillText("NEWS", 235, 67);
-
-    ctx.restore();
-}
-
-
-function drawLogo() {
-    if (!logo) return;
-
-    const size = 112;
-    const x = W - size - 30;
-    const y = PHOTO_HEIGHT - size - 25;
-
-    ctx.save();
-
-    // White background with rounded corners
-    ctx.fillStyle = "#ffffff";
-    ctx.beginPath();
-    ctx.roundRect(x, y, size, size, 12);
-    ctx.fill();
-
-    // Black rounded border
-    ctx.strokeStyle = "#000000";
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.roundRect(x + 2, y + 2, size - 4, size - 4, 12);
-    ctx.stroke();
-
-    // Fit logo inside the frame
-    const padding = 9;
-    const maxW = size - padding * 2;
-    const maxH = size - padding * 2;
-
-    const scale = Math.min(
-        maxW / logo.width,
-        maxH / logo.height
-    );
-
-    const dw = logo.width * scale;
-    const dh = logo.height * scale;
-
-    ctx.drawImage(
-        logo,
-        x + (size - dw) / 2,
-        y + (size - dh) / 2,
-        dw,
-        dh
-    );
-
-    ctx.restore();
-}
-
-
-function drawPhotoSection() {
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, W, PHOTO_HEIGHT);
-
-    if (photo) {
-        drawCoverImage(photo);
-    } else {
-        ctx.fillStyle = "#e8edf3";
-        ctx.fillRect(0, 0, W, PHOTO_HEIGHT);
-
+    if (!state.photo) {
         ctx.fillStyle = "#667085";
-        ctx.textAlign = "center";
         ctx.font = "bold 38px Arial";
-        ctx.fillText("UPLOAD NEWS PHOTO", W / 2, PHOTO_HEIGHT / 2);
+        ctx.textAlign = "center";
+        ctx.fillText("UPLOAD NEWS PHOTO", W / 2, photoHeight / 2);
         ctx.textAlign = "left";
+    } else {
+        const img = state.photo;
+
+        const scale = Math.max(
+            W / img.width,
+            photoHeight / img.height
+        ) * state.zoom;
+
+        const drawW = img.width * scale;
+        const drawH = img.height * scale;
+
+        const overflowX = Math.max(0, drawW - W);
+        const overflowY = Math.max(0, drawH - photoHeight);
+
+        const dx = (W - drawW) / 2 -
+            (state.cropX / 100) * overflowX / 2;
+
+        const dy = (photoHeight - drawH) / 2 -
+            (state.cropY / 100) * overflowY / 2;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, 0, W, photoHeight);
+        ctx.clip();
+        ctx.drawImage(img, dx, dy, drawW, drawH);
+        ctx.restore();
     }
 
-    drawBrandBanner();
-    drawLogo();
+    // Brand label
+    const label = "THE GARUDA NEWS";
+
+    ctx.save();
+    ctx.font = "bold 25px Arial";
+
+    const boxW = ctx.measureText(label).width + 42;
+    const boxH = 48;
+    const boxX = (W - boxW) / 2;
+    const boxY = photoHeight - boxH - 22;
+
+    ctx.fillStyle = "rgba(12,25,45,0.88)";
+    ctx.beginPath();
+    ctx.roundRect(boxX, boxY, boxW, boxH, 10);
+    ctx.fill();
+
+    ctx.fillStyle = "#ffffff";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(label, W / 2, boxY + boxH / 2);
+    ctx.restore();
+
+    // Uploaded logo
+    if (state.logo) {
+        const size = 105;
+        const x = W - size - 28;
+        const y = photoHeight - size - 85;
+
+        const scale = Math.min(
+            (size - 18) / state.logo.width,
+            (size - 18) / state.logo.height
+        );
+
+        const dw = state.logo.width * scale;
+        const dh = state.logo.height * scale;
+
+        ctx.save();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.beginPath();
+        ctx.roundRect(x, y, size, size, 10);
+        ctx.fill();
+
+        ctx.strokeStyle = "#111111";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        ctx.drawImage(
+            state.logo,
+            x + (size - dw) / 2,
+            y + (size - dh) / 2,
+            dw,
+            dh
+        );
+
+        ctx.restore();
+    }
 }
 
-function drawHeadline() {
-    const text = $("headline").value.trim();
+function drawPoster(format) {
+    const state = states[format];
+    const canvas = $(format + "Canvas");
+    const ctx = canvas.getContext("2d");
+
+    const H = state.height;
+
+    // Story photo = 40%; Feed photo = 30%
+    const photoRatio = format === "story" ? 0.40 : 0.30;
+    const photoHeight = Math.round(H * photoRatio);
+
+    // Footer position
+    const footerHeight = 180;
+    const footerY = H - footerHeight;
+
+    canvas.width = W;
+    canvas.height = H;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, W, H);
+
+    drawPhoto(ctx, state, photoHeight);
+
+    const headline = $(format + "Headline").value.trim();
+    const description = $(format + "Description").value.trim();
 
     const left = 65;
     const maxWidth = 950;
 
-    let fontSize = 46;
-    const minFontSize = 36;
-    let lines;
+    // Headline
+    let headlineSize = format === "feed" ? 44 : 46;
+    const minHeadlineSize = 32;
+    let headlineLines;
 
     do {
-        const font = `bold ${fontSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
-        lines = wrapText(text, maxWidth, font);
+        const font = `bold ${headlineSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
 
-        if (lines.length <= 3) break;
+        headlineLines = wrapText(ctx, headline, maxWidth, font);
 
-        fontSize -= 2;
-    } while (fontSize >= minFontSize);
+        if (headlineLines.length <= 3) break;
 
+        headlineSize -= 2;
+    } while (headlineSize >= minHeadlineSize);
+
+    const headlineFont = `bold ${headlineSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
+
+    ctx.font = headlineFont;
     ctx.fillStyle = "#101820";
-    ctx.font = `bold ${fontSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
+    ctx.textBaseline = "alphabetic";
 
-    const lineHeight = fontSize * 1.35;
-    let y = 860;
+    let y = photoHeight + (format === "feed" ? 65 : 85);
+    const headlineLineHeight = headlineSize * 1.3;
 
-    for (const line of lines) {
+    headlineLines.forEach(line => {
         ctx.fillText(line, left, y);
-        y += lineHeight;
-    }
+        y += headlineLineHeight;
+    });
 
-    return y + 27;
-}
+    y += format === "feed" ? 14 : 20;
 
-function drawDescription(startY) {
-    const text = $("description").value.trim();
+    // Description font: 40px reduced by 2 points
+    const descriptionSize = 38;
 
-    const left = 65;
-    const maxWidth = 950;
+    // Slightly tighter line spacing for feed to fit more content
+    const descriptionLineHeight = format === "feed" ? 53 : 59;
 
-    const fontSize = 40;
-    const lineHeight = 64;
+    const descriptionFont =
+        `${descriptionSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
 
-    const font = `${fontSize}px "Noto Sans Telugu", "Nirm
-    ala UI", Arial`;
+    const descriptionLines = wrapText(
+        ctx,
+        description,
+        maxWidth,
+        descriptionFont
+    );
 
-    const lines = wrapText(text, maxWidth, font);
-
-    ctx.font = font;
+    ctx.font = descriptionFont;
     ctx.fillStyle = "#535b65";
 
-    let y = startY;
-
-    // Leave room for the footer
-    const maxY = 1635;
-
-    for (const line of lines) {
-        if (y > maxY) {
+    // Available content space is larger in Feed format
+    for (const line of descriptionLines) {
+        if (y + descriptionLineHeight > footerY - 25) {
             ctx.fillStyle = "#d71927";
             ctx.font = "bold 25px Arial";
-            ctx.fillText("...", left, y);
+            ctx.fillText("...", left, Math.min(y, footerY - 10));
             break;
         }
 
+        ctx.font = descriptionFont;
         ctx.fillStyle = "#535b65";
-        ctx.font = font;
         ctx.fillText(line, left, y);
 
-        y += lineHeight;
+        y += descriptionLineHeight;
     }
 
-    return y;
-}
+    // Footer colour stripe
+    const stripeY = footerY;
+    const colors = ["#d71927", "#f4c542", "#2375b9", "#2b9a59"];
 
-function drawFooter() {
-    const stripeY = 1680;
-    const stripeHeight = 6;
-
-    const colors = [
-        "#d71927",
-        "#f4c542",
-        "#2375b9",
-        "#2b9a59"
-    ];
-
-    const segmentWidth = W / 4;
-
-    colors.forEach((color, index) => {
+    colors.forEach((color, i) => {
         ctx.fillStyle = color;
-        ctx.fillRect(
-            index * segmentWidth,
-            stripeY,
-            segmentWidth,
-            stripeHeight
-        );
+        ctx.fillRect(i * (W / 4), stripeY, W / 4, 6);
     });
 
     // Date and edition
     ctx.fillStyle = "#596474";
-    ctx.font = "bold 27px Arial";
-    ctx.textBaseline = "alphabetic";
-
+    ctx.font = "bold 25px Arial";
     ctx.fillText(
-        $("dateText").value.trim(),
+        $(format + "Date").value.trim(),
         65,
-        1730
+        footerY + 52
     );
 
-    // Large rounded share bar
+    // Share bar
     const barX = 55;
-    const barY = 1760;
+    const barY = footerY + 75;
     const barW = 970;
     const barH = 75;
-    const radius = 16;
 
     ctx.fillStyle = "#f1f3f4";
-
     ctx.beginPath();
-    ctx.roundRect(barX, barY, barW, barH, radius);
+    ctx.roundRect(barX, barY, barW, barH, 16);
     ctx.fill();
 
-    // Left share text
     ctx.fillStyle = "#29364a";
     ctx.font = "bold 23px Arial";
     ctx.textBaseline = "middle";
-
     ctx.fillText(
         "SHARE YOUR NEWS - 8500781269",
         75,
@@ -708,7 +546,6 @@ function drawFooter() {
     const iconSize = 31;
 
     ctx.save();
-
     ctx.strokeStyle = "#c13555";
     ctx.lineWidth = 4;
 
@@ -717,13 +554,7 @@ function drawFooter() {
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(
-        iconX + iconSize / 2,
-        iconY + iconSize / 2,
-        7,
-        0,
-        Math.PI * 2
-    );
+    ctx.arc(iconX + 15.5, iconY + 15.5, 7, 0, Math.PI * 2);
     ctx.stroke();
 
     ctx.beginPath();
@@ -735,56 +566,23 @@ function drawFooter() {
 
     ctx.fillStyle = "#b52e4b";
     ctx.font = "bold 23px Arial";
+    ctx.fillText("@thegaruda_news", 770, barY + barH / 2);
 
-    ctx.fillText(
-        "@thegaruda_news",
-        770,
-        barY + barH / 2
-    );
+    ctx.textBaseline = "alphabetic";
 }
 
-function renderPoster() {
-    ctx.clearRect(0, 0, W, H);
-
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, W, H);
-
-    drawPhotoSection();
-
-    const nextY = drawHeadline();
-    drawDescription(nextY);
-
-    drawFooter();
+function renderPoster(format) {
+    drawPoster(format);
 }
 
-function updateWordCount() {
-    const words = getWords($("description").value);
+function downloadPoster(format) {
+    renderPoster(format);
 
-    $("wordCount").textContent =
-        words.length + " / 100 words";
+    const canvas = $(format + "Canvas");
 
-    $("wordCount").style.color =
-        words.length > 100 ? "#d71927" : "#7d8797";
-}
-
-["headline", "description", "dateText"].forEach(id => {
-    $(id).addEventListener("input", () => {
-        if (id === "description") updateWordCount();
-        renderPoster();
-    });
-});
-
-$("resetAll").addEventListener("click", () => {
-    $("headline").value = "";
-    $("description").value = "";
-    renderPoster();
-    updateWordCount();
-});
-
-$("refresh").addEventListener("click", renderPoster);
-
-$("downloadBtn").addEventListener("click", () => {
-    renderPoster();
+    const filename = format === "story"
+        ? "THE-GARUDA-NEWS-Story-9x16.png"
+        : "THE-GARUDA-NEWS-Feed-3x4.png";
 
     canvas.toBlob(blob => {
         if (!blob) {
@@ -796,26 +594,32 @@ $("downloadBtn").addEventListener("click", () => {
         const a = document.createElement("a");
 
         a.href = url;
-        a.download = "THE-GARUDA-NEWS.png";
+        a.download = filename;
         a.click();
 
         setTimeout(() => URL.revokeObjectURL(url), 1000);
     }, "image/png");
-});
+}
 
-$("shareBtn").addEventListener("click", async () => {
-    renderPoster();
+async function sharePoster(format) {
+    renderPoster(format);
+
+    const canvas = $(format + "Canvas");
 
     canvas.toBlob(async blob => {
         if (!blob) return;
 
+        const filename = format === "story"
+            ? "THE-GARUDA-NEWS-Story.png"
+            : "THE-GARUDA-NEWS-Feed.png";
+
         const file = new File(
             [blob],
-            "THE-GARUDA-NEWS.png",
-            { type: "image/png" }
+            filename,
+            {type:"image/png"}
         );
 
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        if (navigator.canShare && navigator.canShare({files:[file]})) {
             try {
                 await navigator.share({
                     title: "THE GARUDA NEWS",
@@ -828,15 +632,109 @@ $("shareBtn").addEventListener("click", async () => {
                 }
             }
         } else {
-            alert("Direct image sharing is not supported here. Please use Download PNG.");
+            alert("Direct image sharing is not supported here. Please download the PNG.");
         }
     }, "image/png");
-});
+}
 
-// Initial rendering
-updateWordCount();
-renderPoster();
+function setupEditor(format) {
+    const state = states[format];
 
+    $(format + "Photo").addEventListener("change", e => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        loadImage(file, img => {
+            state.photo = img;
+            renderPoster(format);
+        });
+    });
+
+    $(format + "Logo").addEventListener("change", e => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        loadImage(file, img => {
+            state.logo = img;
+            renderPoster(format);
+        });
+    });
+
+    $(format + "Zoom").addEventListener("input", e => {
+        state.zoom = Number(e.target.value);
+
+        $(format + "ZoomValue").textContent =
+            state.zoom.toFixed(2) + "x";
+
+        renderPoster(format);
+    });
+
+    $(format + "CropX").addEventListener("input", e => {
+        state.cropX = Number(e.target.value);
+        renderPoster(format);
+    });
+
+    $(format + "CropY").addEventListener("input", e => {
+        state.cropY = Number(e.target.value);
+        renderPoster(format);
+    });
+
+    $(format + "ResetCrop").addEventListener("click", () => {
+        state.zoom = 1;
+        state.cropX = 0;
+        state.cropY = 0;
+
+        $(format + "Zoom").value = 1;
+        $(format + "CropX").value = 0;
+        $(format + "CropY").value = 0;
+
+        $(format + "ZoomValue").textContent = "1.00x";
+
+        renderPoster(format);
+    });
+
+    [
+        format + "Headline",
+        format + "Description",
+        format + "Date"
+    ].forEach(id => {
+        $(id).addEventListener("input", () => {
+            if (id === format + "Description") {
+                const count = getWords($(id).value).length;
+                $(format + "Count").textContent = count + " words";
+            }
+
+            renderPoster(format);
+        });
+    });
+
+    $(format + "ResetText").addEventListener("click", () => {
+        $(format + "Headline").value = "";
+        $(format + "Description").value = "";
+
+        $(format + "Count").textContent = "0 words";
+
+        renderPoster(format);
+    });
+
+    $(format + "Refresh").addEventListener("click", () => {
+        renderPoster(format);
+    });
+
+    $(format + "Download").addEventListener("click", () => {
+        downloadPoster(format);
+    });
+
+    $(format + "Share").addEventListener("click", () => {
+        sharePoster(format);
+    });
+}
+
+setupEditor("story");
+setupEditor("feed");
+
+renderPoster("story");
+renderPoster("feed");
 </script>
 
 </body>
