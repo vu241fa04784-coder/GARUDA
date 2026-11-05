@@ -8,55 +8,264 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#eef1f5;color:#182235}
-header{background:#101d35;color:white;padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:43px;height:43px;object-fit:contain;background:white;border-radius:5px}
-.brand h1{font-size:19px;letter-spacing:1px}
-.brand p{color:#c5cedb;font-size:10px;margin-top:4px;letter-spacing:1.5px}
-main{max-width:1250px;margin:auto;padding:20px}
-.format-tabs{display:flex;gap:12px;margin-bottom:20px}
-.format-tabs button{flex:1;padding:15px;border:2px solid #d7dce5;border-radius:9px;background:white;font-weight:bold;cursor:pointer;color:#26364e}
-.format-tabs button.active{background:#d92732;color:white;border-color:#d92732}
-.layout{display:grid;grid-template-columns:370px minmax(0,1fr);gap:25px;align-items:start}
-.editor{background:white;padding:20px;border-radius:12px;box-shadow:0 4px 20px #14213a12}
-.editor h2{font-size:20px;margin-bottom:18px}
-.group{margin-bottom:17px}
-.group label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#344158}
-input[type="text"],textarea{width:100%;padding:11px;border:1px solid #d7dce5;border-radius:7px;font-size:14px;outline:none;font-family:inherit}
-textarea{min-height:110px;resize:vertical;line-height:1.6}
-input:focus,textarea:focus{border-color:#d92732}
-input[type="file"]{width:100%;font-size:12px}
-input[type="range"]{width:100%;accent-color:#d92732}
-.range-value{font-size:12px;color:#d92732;font-weight:bold;margin-top:4px}
-.hint{color:#7d8797;font-size:11px;margin-top:5px}
-.button{border:none;padding:12px 15px;border-radius:7px;cursor:pointer;font-weight:700;font-size:13px}
-.primary{background:#d92732;color:white}
-.secondary{background:#e9edf4;color:#24334b}
-.button-row,.actions{display:flex;gap:10px;margin-top:14px}
-.button-row button,.actions button{flex:1}
-.actions button{padding:14px 8px}
-.preview-area{display:flex;flex-direction:column;align-items:center}
-.preview-title{width:100%;font-size:16px;font-weight:bold;margin-bottom:12px}
-.poster-frame{width:min(100%,450px);background:white;overflow:hidden;box-shadow:0 8px 35px #14213a30;border-radius:4px}
-.poster-frame.story{aspect-ratio:9/16}
-.poster-frame.feed{aspect-ratio:3/4}
-.poster-frame canvas{width:100%;height:100%;display:block}
-.editor-panel{display:none}
-.editor-panel.active{display:block}
-.preview-panel{display:none}
-.preview-panel.active{display:flex;width:100%;flex-direction:column;align-items:center}
-@media(max-width:850px){
-.layout{grid-template-columns:1fr}
-.editor{order:2}
-.preview-panel{order:1}
-.poster-frame{width:min(100%,420px)}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#eef1f5;
+    color:#182235;
 }
+
+header{
+    background:#101d35;
+    color:white;
+    padding:17px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand img{
+    width:43px;
+    height:43px;
+    object-fit:contain;
+    background:white;
+    border-radius:5px;
+}
+
+.brand h1{
+    font-size:19px;
+    letter-spacing:1px;
+}
+
+.brand p{
+    color:#c5cedb;
+    font-size:10px;
+    margin-top:4px;
+    letter-spacing:1.5px;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:20px;
+}
+
+.format-tabs{
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.format-tabs button{
+    flex:1;
+    padding:15px;
+    border:2px solid #d7dce5;
+    border-radius:9px;
+    background:white;
+    font-weight:bold;
+    cursor:pointer;
+    color:#26364e;
+}
+
+.format-tabs button.active{
+    background:#d92732;
+    color:white;
+    border-color:#d92732;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:370px minmax(0,1fr);
+    gap:25px;
+    align-items:start;
+}
+
+.editor{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 20px #14213a12;
+}
+
+.editor h2{
+    font-size:20px;
+    margin-bottom:18px;
+}
+
+.group{
+    margin-bottom:17px;
+}
+
+.group label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:7px;
+    color:#344158;
+}
+
+input[type="text"],textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #d7dce5;
+    border-radius:7px;
+    font-size:14px;
+    outline:none;
+    font-family:inherit;
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+    line-height:1.6;
+}
+
+input:focus,textarea:focus{
+    border-color:#d92732;
+}
+
+input[type="file"]{
+    width:100%;
+    font-size:12px;
+}
+
+input[type="range"]{
+    width:100%;
+    accent-color:#d92732;
+}
+
+.range-value{
+    font-size:12px;
+    color:#d92732;
+    font-weight:bold;
+    margin-top:4px;
+}
+
+.hint{
+    color:#7d8797;
+    font-size:11px;
+    margin-top:5px;
+}
+
+.button{
+    border:none;
+    padding:12px 15px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+}
+
+.primary{
+    background:#d92732;
+    color:white;
+}
+
+.secondary{
+    background:#e9edf4;
+    color:#24334b;
+}
+
+.button-row,.actions{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+}
+
+.button-row button,.actions button{
+    flex:1;
+}
+
+.actions button{
+    padding:14px 8px;
+}
+
+.editor-panel,.preview-panel{
+    display:none;
+}
+
+.editor-panel.active{
+    display:block;
+}
+
+.preview-panel.active{
+    display:flex;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+}
+
+.preview-title{
+    width:100%;
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.poster-frame{
+    width:min(100%,450px);
+    background:white;
+    overflow:hidden;
+    box-shadow:0 8px 35px #14213a30;
+    border-radius:4px;
+}
+
+.poster-frame.story{
+    aspect-ratio:9/16;
+}
+
+.poster-frame.feed{
+    aspect-ratio:3/4;
+}
+
+.poster-frame canvas{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+@media(max-width:850px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .editor{
+        order:2;
+    }
+
+    .preview-panel{
+        order:1;
+    }
+
+    .poster-frame{
+        width:min(100%,420px);
+    }
+}
+
 @media(max-width:480px){
-main{padding:12px}
-header{padding:13px}
-.brand h1{font-size:16px}
-.format-tabs button{font-size:12px;padding:12px 5px}
+    main{
+        padding:12px;
+    }
+
+    header{
+        padding:13px;
+    }
+
+    .brand h1{
+        font-size:16px;
+    }
+
+    .format-tabs button{
+        font-size:12px;
+        padding:12px 5px;
+    }
 }
 </style>
 </head>
@@ -87,6 +296,7 @@ header{padding:13px}
 
     <!-- STORY EDITOR -->
     <div id="storyEditor" class="editor-panel active">
+
         <h2>Story Poster Editor</h2>
 
         <div class="group">
@@ -120,6 +330,11 @@ header{padding:13px}
         </div>
 
         <div class="group">
+            <label>Brand Name</label>
+            <input type="text" id="storyBrand" value="THE GARUDA NEWS">
+        </div>
+
+        <div class="group">
             <label>News Headline</label>
             <textarea id="storyHeadline" rows="3">ఓటు హక్కును వినియోగించుకున్న అర్రిబోయిన రాంబాబు గారు</textarea>
         </div>
@@ -145,12 +360,14 @@ header{padding:13px}
             <button class="button secondary" id="storyShare">Share</button>
         </div>
 
-        <p class="hint">Story resolution: 1080 × 1920 pixels.</p>
+        <p class="hint">Resolution: 1080 × 1920 pixels.</p>
         <p class="hint">Photo 40% | News content 60%.</p>
     </div>
 
+
     <!-- FEED EDITOR -->
     <div id="feedEditor" class="editor-panel">
+
         <h2>Feed Post Editor</h2>
 
         <div class="group">
@@ -184,6 +401,11 @@ header{padding:13px}
         </div>
 
         <div class="group">
+            <label>Brand Name</label>
+            <input type="text" id="feedBrand" value="THE GARUDA NEWS">
+        </div>
+
+        <div class="group">
             <label>News Headline</label>
             <textarea id="feedHeadline" rows="3">ఓటు హక్కును వినియోగించుకున్న అర్రిబోయిన రాంబాబు గారు</textarea>
         </div>
@@ -209,21 +431,27 @@ header{padding:13px}
             <button class="button secondary" id="feedShare">Share</button>
         </div>
 
-        <p class="hint">Feed resolution: 1080 × 1440 pixels.</p>
+        <p class="hint">Resolution: 1080 × 1440 pixels.</p>
         <p class="hint">Photo 30% | News content 70%.</p>
     </div>
 
 </section>
 
+
+<!-- STORY PREVIEW -->
 <section id="storyPreview" class="preview-panel active">
     <div class="preview-title">Story Live Preview (9:16)</div>
+
     <div class="poster-frame story">
         <canvas id="storyCanvas" width="1080" height="1920"></canvas>
     </div>
 </section>
 
+
+<!-- FEED PREVIEW -->
 <section id="feedPreview" class="preview-panel">
     <div class="preview-title">Feed Live Preview (3:4)</div>
+
     <div class="poster-frame feed">
         <canvas id="feedCanvas" width="1080" height="1440"></canvas>
     </div>
@@ -232,509 +460,761 @@ header{padding:13px}
 </div>
 </main>
 
+
 <script>
+
 const W = 1080;
+
 const $ = id => document.getElementById(id);
 
+
 const states = {
+
     story: {
-        height: 1920,
-        photo: null,
-        logo: null,
-        zoom: 1,
-        cropX: 0,
-        cropY: 0
+        format:"story",
+        height:1920,
+        photo:null,
+        logo:null,
+        zoom:1,
+        cropX:0,
+        cropY:0
     },
+
     feed: {
-        height: 1440,
-        photo: null,
-        logo: null,
-        zoom: 1,
-        cropX: 0,
-        cropY: 0
+        format:"feed",
+        height:1440,
+        photo:null,
+        logo:null,
+        zoom:1,
+        cropX:0,
+        cropY:0
     }
+
 };
 
-function loadImage(file, callback) {
+
+function loadImage(file,callback){
+
     const reader = new FileReader();
 
     reader.onload = () => {
+
         const img = new Image();
+
         img.onload = () => callback(img);
+
         img.src = reader.result;
+
     };
 
     reader.readAsDataURL(file);
+
 }
 
-function switchFormat(format) {
-    $("storyTab").classList.toggle("active", format === "story");
-    $("feedTab").classList.toggle("active", format === "feed");
 
-    $("storyEditor").classList.toggle("active", format === "story");
-    $("feedEditor").classList.toggle("active", format === "feed");
+function switchFormat(format){
 
-    $("storyPreview").classList.toggle("active", format === "story");
-    $("feedPreview").classList.toggle("active", format === "feed");
+    $("storyTab").classList.toggle("active",format==="story");
+    $("feedTab").classList.toggle("active",format==="feed");
+
+    $("storyEditor").classList.toggle("active",format==="story");
+    $("feedEditor").classList.toggle("active",format==="feed");
+
+    $("storyPreview").classList.toggle("active",format==="story");
+    $("feedPreview").classList.toggle("active",format==="feed");
 
     renderPoster(format);
+
 }
 
-$("storyTab").addEventListener("click", () => switchFormat("story"));
-$("feedTab").addEventListener("click", () => switchFormat("feed"));
 
-function getWords(text) {
+$("storyTab").addEventListener("click",()=>switchFormat("story"));
+$("feedTab").addEventListener("click",()=>switchFormat("feed"));
+
+
+function getWords(text){
+
     return text.trim().split(/\s+/).filter(Boolean);
+
 }
 
-function wrapText(ctx, text, maxWidth, font) {
-    ctx.font = font;
 
-    const words = getWords(text);
-    const lines = [];
-    let line = "";
+function wrapText(ctx,text,maxWidth,font){
 
-    for (const word of words) {
-        const test = line ? line + " " + word : word;
+    ctx.font=font;
 
-        if (ctx.measureText(test).width > maxWidth && line) {
+    const words=getWords(text);
+
+    const lines=[];
+
+    let line="";
+
+    for(const word of words){
+
+        const test=line ? line+" "+word : word;
+
+        if(ctx.measureText(test).width>maxWidth && line){
+
             lines.push(line);
-            line = word;
-        } else {
-            line = test;
+
+            line=word;
+
+        }else{
+
+            line=test;
+
         }
+
     }
 
-    if (line) lines.push(line);
+    if(line) lines.push(line);
+
     return lines;
+
 }
 
-function drawPhoto(ctx, state, photoHeight) {
-    ctx.fillStyle = "#e8edf3";
-    ctx.fillRect(0, 0, W, photoHeight);
 
-    if (!state.photo) {
-        ctx.fillStyle = "#667085";
-        ctx.font = "bold 38px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText("UPLOAD NEWS PHOTO", W / 2, photoHeight / 2);
-        ctx.textAlign = "left";
-    } else {
-        const img = state.photo;
+function drawPhoto(ctx,state,photoHeight){
 
-        const scale = Math.max(
-            W / img.width,
-            photoHeight / img.height
-        ) * state.zoom;
+    ctx.fillStyle="#e8edf3";
 
-        const drawW = img.width * scale;
-        const drawH = img.height * scale;
+    ctx.fillRect(0,0,W,photoHeight);
 
-        const overflowX = Math.max(0, drawW - W);
-        const overflowY = Math.max(0, drawH - photoHeight);
 
-        const dx = (W - drawW) / 2 -
-            (state.cropX / 100) * overflowX / 2;
+    if(!state.photo){
 
-        const dy = (photoHeight - drawH) / 2 -
-            (state.cropY / 100) * overflowY / 2;
+        ctx.fillStyle="#667085";
+
+        ctx.font="bold 38px Arial";
+
+        ctx.textAlign="center";
+
+        ctx.fillText("UPLOAD NEWS PHOTO",W/2,photoHeight/2);
+
+        ctx.textAlign="left";
+
+    }else{
+
+        const img=state.photo;
+
+        const scale=Math.max(
+            W/img.width,
+            photoHeight/img.height
+        )*state.zoom;
+
+        const drawW=img.width*scale;
+        const drawH=img.height*scale;
+
+        const overflowX=Math.max(0,drawW-W);
+        const overflowY=Math.max(0,drawH-photoHeight);
+
+        const dx=(W-drawW)/2-
+            (state.cropX/100)*overflowX/2;
+
+        const dy=(photoHeight-drawH)/2-
+            (state.cropY/100)*overflowY/2;
 
         ctx.save();
+
         ctx.beginPath();
-        ctx.rect(0, 0, W, photoHeight);
+        ctx.rect(0,0,W,photoHeight);
         ctx.clip();
-        ctx.drawImage(img, dx, dy, drawW, drawH);
+
+        ctx.drawImage(img,dx,dy,drawW,drawH);
+
         ctx.restore();
+
     }
 
-    // Brand label
-    const label = "THE GARUDA NEWS";
+
+    // CUSTOMIZABLE BRAND LABEL
+
+    const label=$(state.format+"Brand").value.trim() || "THE GARUDA NEWS";
 
     ctx.save();
-    ctx.font = "bold 25px Arial";
 
-    const boxW = ctx.measureText(label).width + 42;
-    const boxH = 48;
-    const boxX = (W - boxW) / 2;
-    const boxY = photoHeight - boxH - 22;
+    let brandFont=34;
 
-    ctx.fillStyle = "rgba(12,25,45,0.88)";
+    while(brandFont>20){
+
+        ctx.font=`bold ${brandFont}px Arial`;
+
+        if(ctx.measureText(label).width<=850) break;
+
+        brandFont-=2;
+
+    }
+
+    const boxW=ctx.measureText(label).width+54;
+    const boxH=62;
+
+    const boxX=(W-boxW)/2;
+    const boxY=photoHeight-boxH-22;
+
+    ctx.fillStyle="rgba(12,25,45,0.90)";
+
     ctx.beginPath();
-    ctx.roundRect(boxX, boxY, boxW, boxH, 10);
+    ctx.roundRect(boxX,boxY,boxW,boxH,12);
     ctx.fill();
 
-    ctx.fillStyle = "#ffffff";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(label, W / 2, boxY + boxH / 2);
+    ctx.fillStyle="#ffffff";
+
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
+    ctx.font=`bold ${brandFont}px Arial`;
+
+    ctx.fillText(label,W/2,boxY+boxH/2);
+
     ctx.restore();
 
-    // Uploaded logo
-    if (state.logo) {
-        const size = 105;
-        const x = W - size - 28;
-        const y = photoHeight - size - 85;
 
-        const scale = Math.min(
-            (size - 18) / state.logo.width,
-            (size - 18) / state.logo.height
+    // LARGE UPLOADED LOGO
+
+    if(state.logo){
+
+        const size=140;
+
+        const x=W-size-28;
+        const y=25;
+
+        const scale=Math.min(
+            (size-18)/state.logo.width,
+            (size-18)/state.logo.height
         );
 
-        const dw = state.logo.width * scale;
-        const dh = state.logo.height * scale;
+        const dw=state.logo.width*scale;
+        const dh=state.logo.height*scale;
 
         ctx.save();
 
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle="#ffffff";
+
         ctx.beginPath();
-        ctx.roundRect(x, y, size, size, 10);
+        ctx.roundRect(x,y,size,size,12);
         ctx.fill();
 
-        ctx.strokeStyle = "#111111";
-        ctx.lineWidth = 4;
+        ctx.strokeStyle="#111111";
+        ctx.lineWidth=4;
         ctx.stroke();
 
         ctx.drawImage(
             state.logo,
-            x + (size - dw) / 2,
-            y + (size - dh) / 2,
+            x+(size-dw)/2,
+            y+(size-dh)/2,
             dw,
             dh
         );
 
         ctx.restore();
+
     }
+
 }
 
-function drawPoster(format) {
-    const state = states[format];
-    const canvas = $(format + "Canvas");
-    const ctx = canvas.getContext("2d");
 
-    const H = state.height;
+function drawPoster(format){
 
-    // Story photo = 40%; Feed photo = 30%
-    const photoRatio = format === "story" ? 0.40 : 0.30;
-    const photoHeight = Math.round(H * photoRatio);
+    const state=states[format];
 
-    // Footer position
-    const footerHeight = 180;
-    const footerY = H - footerHeight;
+    const canvas=$(format+"Canvas");
+    const ctx=canvas.getContext("2d");
 
-    canvas.width = W;
-    canvas.height = H;
+    const H=state.height;
 
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, W, H);
+    // Story photo 40%; Feed photo 30%
 
-    drawPhoto(ctx, state, photoHeight);
+    const photoRatio=format==="story"?0.40:0.30;
 
-    const headline = $(format + "Headline").value.trim();
-    const description = $(format + "Description").value.trim();
+    const photoHeight=Math.round(H*photoRatio);
 
-    const left = 65;
-    const maxWidth = 950;
+    const footerHeight=180;
 
-    // Headline
-    let headlineSize = format === "feed" ? 44 : 46;
-    const minHeadlineSize = 32;
+    const footerY=H-footerHeight;
+
+    canvas.width=W;
+    canvas.height=H;
+
+    ctx.clearRect(0,0,W,H);
+
+    ctx.fillStyle="#ffffff";
+    ctx.fillRect(0,0,W,H);
+
+
+    drawPhoto(ctx,state,photoHeight);
+
+
+    const headline=$(format+"Headline").value.trim();
+
+    const description=$(format+"Description").value.trim();
+
+    const left=65;
+
+    const maxWidth=950;
+
+
+    // HEADLINE
+
+    let headlineSize=format==="feed"?44:46;
+
+    const minHeadlineSize=32;
+
     let headlineLines;
 
-    do {
-        const font = `bold ${headlineSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
+    do{
 
-        headlineLines = wrapText(ctx, headline, maxWidth, font);
+        const font=`bold ${headlineSize}px "Noto Sans Telugu","Nirmala UI",Arial`;
 
-        if (headlineLines.length <= 3) break;
+        headlineLines=wrapText(ctx,headline,maxWidth,font);
 
-        headlineSize -= 2;
-    } while (headlineSize >= minHeadlineSize);
+        if(headlineLines.length<=3) break;
 
-    const headlineFont = `bold ${headlineSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
+        headlineSize-=2;
 
-    ctx.font = headlineFont;
-    ctx.fillStyle = "#101820";
-    ctx.textBaseline = "alphabetic";
+    }while(headlineSize>=minHeadlineSize);
 
-    let y = photoHeight + (format === "feed" ? 65 : 85);
-    const headlineLineHeight = headlineSize * 1.3;
 
-    headlineLines.forEach(line => {
-        ctx.fillText(line, left, y);
-        y += headlineLineHeight;
+    const headlineFont=`bold ${headlineSize}px "Noto Sans Telugu","Nirmala UI",Arial`;
+
+    ctx.font=headlineFont;
+
+    ctx.fillStyle="#101820";
+
+    ctx.textBaseline="alphabetic";
+
+    let y=photoHeight+(format==="feed"?65:85);
+
+    const headlineLineHeight=headlineSize*1.3;
+
+
+    headlineLines.forEach(line=>{
+
+        ctx.fillText(line,left,y);
+
+        y+=headlineLineHeight;
+
     });
 
-    y += format === "feed" ? 14 : 20;
 
-    // Description font: 40px reduced by 2 points
-    const descriptionSize = 38;
+    y+=format==="feed"?14:20;
 
-    // Slightly tighter line spacing for feed to fit more content
-    const descriptionLineHeight = format === "feed" ? 53 : 59;
 
-    const descriptionFont =
-        `${descriptionSize}px "Noto Sans Telugu", "Nirmala UI", Arial`;
+    // DESCRIPTION - LARGER FONT
 
-    const descriptionLines = wrapText(
+    const descriptionSize=44;
+
+    const descriptionLineHeight=format==="feed"?61:68;
+
+    const descriptionFont=
+        `${descriptionSize}px "Noto Sans Telugu","Nirmala UI",Arial`;
+
+    const descriptionLines=wrapText(
         ctx,
         description,
         maxWidth,
         descriptionFont
     );
 
-    ctx.font = descriptionFont;
-    ctx.fillStyle = "#535b65";
+    ctx.font=descriptionFont;
 
-    // Available content space is larger in Feed format
-    for (const line of descriptionLines) {
-        if (y + descriptionLineHeight > footerY - 25) {
-            ctx.fillStyle = "#d71927";
-            ctx.font = "bold 25px Arial";
-            ctx.fillText("...", left, Math.min(y, footerY - 10));
+    ctx.fillStyle="#535b65";
+
+
+    for(const line of descriptionLines){
+
+        if(y+descriptionLineHeight>footerY-25){
+
+            ctx.fillStyle="#d71927";
+
+            ctx.font="bold 25px Arial";
+
+            ctx.fillText("...",left,Math.min(y,footerY-10));
+
             break;
+
         }
 
-        ctx.font = descriptionFont;
-        ctx.fillStyle = "#535b65";
-        ctx.fillText(line, left, y);
+        ctx.font=descriptionFont;
 
-        y += descriptionLineHeight;
+        ctx.fillStyle="#535b65";
+
+        ctx.fillText(line,left,y);
+
+        y+=descriptionLineHeight;
+
     }
 
-    // Footer colour stripe
-    const stripeY = footerY;
-    const colors = ["#d71927", "#f4c542", "#2375b9", "#2b9a59"];
 
-    colors.forEach((color, i) => {
-        ctx.fillStyle = color;
-        ctx.fillRect(i * (W / 4), stripeY, W / 4, 6);
+    // FOOTER STRIPE
+
+    const colors=["#d71927","#f4c542","#2375b9","#2b9a59"];
+
+    colors.forEach((color,i)=>{
+
+        ctx.fillStyle=color;
+
+        ctx.fillRect(i*(W/4),footerY,W/4,6);
+
     });
 
-    // Date and edition
-    ctx.fillStyle = "#596474";
-    ctx.font = "bold 25px Arial";
+
+    // DATE
+
+    ctx.fillStyle="#596474";
+
+    ctx.font="bold 25px Arial";
+
     ctx.fillText(
-        $(format + "Date").value.trim(),
+        $(format+"Date").value.trim(),
         65,
-        footerY + 52
+        footerY+52
     );
 
-    // Share bar
-    const barX = 55;
-    const barY = footerY + 75;
-    const barW = 970;
-    const barH = 75;
 
-    ctx.fillStyle = "#f1f3f4";
+    // SHARE BAR
+
+    const barX=55;
+    const barY=footerY+75;
+    const barW=970;
+    const barH=75;
+
+    ctx.fillStyle="#f1f3f4";
+
     ctx.beginPath();
-    ctx.roundRect(barX, barY, barW, barH, 16);
+    ctx.roundRect(barX,barY,barW,barH,16);
     ctx.fill();
 
-    ctx.fillStyle = "#29364a";
-    ctx.font = "bold 23px Arial";
-    ctx.textBaseline = "middle";
+
+    ctx.fillStyle="#29364a";
+
+    ctx.font="bold 23px Arial";
+
+    ctx.textBaseline="middle";
+
     ctx.fillText(
         "SHARE YOUR NEWS - 8500781269",
         75,
-        barY + barH / 2
+        barY+barH/2
     );
 
-    // Instagram icon
-    const iconX = 725;
-    const iconY = barY + 22;
-    const iconSize = 31;
+
+    // INSTAGRAM ICON
+
+    const iconX=725;
+    const iconY=barY+22;
+    const iconSize=31;
 
     ctx.save();
-    ctx.strokeStyle = "#c13555";
-    ctx.lineWidth = 4;
+
+    ctx.strokeStyle="#c13555";
+    ctx.lineWidth=4;
 
     ctx.beginPath();
-    ctx.roundRect(iconX, iconY, iconSize, iconSize, 8);
+    ctx.roundRect(iconX,iconY,iconSize,iconSize,8);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(iconX + 15.5, iconY + 15.5, 7, 0, Math.PI * 2);
+    ctx.arc(iconX+15.5,iconY+15.5,7,0,Math.PI*2);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(iconX + 23, iconY + 7, 2, 0, Math.PI * 2);
-    ctx.fillStyle = "#c13555";
+    ctx.arc(iconX+23,iconY+7,2,0,Math.PI*2);
+
+    ctx.fillStyle="#c13555";
     ctx.fill();
 
     ctx.restore();
 
-    ctx.fillStyle = "#b52e4b";
-    ctx.font = "bold 23px Arial";
-    ctx.fillText("@thegaruda_news", 770, barY + barH / 2);
 
-    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle="#b52e4b";
+
+    ctx.font="bold 23px Arial";
+
+    ctx.fillText(
+        "@thegaruda_news",
+        770,
+        barY+barH/2
+    );
+
+    ctx.textBaseline="alphabetic";
+
 }
 
-function renderPoster(format) {
+
+function renderPoster(format){
+
     drawPoster(format);
+
 }
 
-function downloadPoster(format) {
+
+function downloadPoster(format){
+
     renderPoster(format);
 
-    const canvas = $(format + "Canvas");
+    const canvas=$(format+"Canvas");
 
-    const filename = format === "story"
-        ? "THE-GARUDA-NEWS-Story-9x16.png"
-        : "THE-GARUDA-NEWS-Feed-3x4.png";
+    const filename=format==="story"
+        ?"THE-GARUDA-NEWS-Story-9x16.png"
+        :"THE-GARUDA-NEWS-Feed-3x4.png";
 
-    canvas.toBlob(blob => {
-        if (!blob) {
+    canvas.toBlob(blob=>{
+
+        if(!blob){
+
             alert("Unable to create poster. Please try again.");
+
             return;
+
         }
 
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
+        const url=URL.createObjectURL(blob);
 
-        a.href = url;
-        a.download = filename;
+        const a=document.createElement("a");
+
+        a.href=url;
+        a.download=filename;
+
         a.click();
 
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-    }, "image/png");
+        setTimeout(()=>URL.revokeObjectURL(url),1000);
+
+    },"image/png");
+
 }
 
-async function sharePoster(format) {
+
+async function sharePoster(format){
+
     renderPoster(format);
 
-    const canvas = $(format + "Canvas");
+    const canvas=$(format+"Canvas");
 
-    canvas.toBlob(async blob => {
-        if (!blob) return;
+    canvas.toBlob(async blob=>{
 
-        const filename = format === "story"
-            ? "THE-GARUDA-NEWS-Story.png"
-            : "THE-GARUDA-NEWS-Feed.png";
+        if(!blob) return;
 
-        const file = new File(
+        const filename=format==="story"
+            ?"THE-GARUDA-NEWS-Story.png"
+            :"THE-GARUDA-NEWS-Feed.png";
+
+        const file=new File(
             [blob],
             filename,
             {type:"image/png"}
         );
 
-        if (navigator.canShare && navigator.canShare({files:[file]})) {
-            try {
+        if(navigator.canShare && navigator.canShare({files:[file]})){
+
+            try{
+
                 await navigator.share({
-                    title: "THE GARUDA NEWS",
-                    text: "Your News. Your Voice.",
-                    files: [file]
+
+                    title:"THE GARUDA NEWS",
+
+                    text:"Your News. Your Voice.",
+
+                    files:[file]
+
                 });
-            } catch (error) {
-                if (error.name !== "AbortError") {
+
+            }catch(error){
+
+                if(error.name!=="AbortError"){
+
                     alert("Sharing was not completed. Please download the PNG.");
+
                 }
+
             }
-        } else {
+
+        }else{
+
             alert("Direct image sharing is not supported here. Please download the PNG.");
+
         }
-    }, "image/png");
+
+    },"image/png");
+
 }
 
-function setupEditor(format) {
-    const state = states[format];
 
-    $(format + "Photo").addEventListener("change", e => {
-        const file = e.target.files[0];
-        if (!file) return;
+function setupEditor(format){
 
-        loadImage(file, img => {
-            state.photo = img;
+    const state=states[format];
+
+
+    // PHOTO UPLOAD
+
+    $(format+"Photo").addEventListener("change",e=>{
+
+        const file=e.target.files[0];
+
+        if(!file) return;
+
+        loadImage(file,img=>{
+
+            state.photo=img;
+
             renderPoster(format);
+
         });
+
     });
 
-    $(format + "Logo").addEventListener("change", e => {
-        const file = e.target.files[0];
-        if (!file) return;
 
-        loadImage(file, img => {
-            state.logo = img;
+    // LOGO UPLOAD
+
+    $(format+"Logo").addEventListener("change",e=>{
+
+        const file=e.target.files[0];
+
+        if(!file) return;
+
+        loadImage(file,img=>{
+
+            state.logo=img;
+
             renderPoster(format);
+
         });
+
     });
 
-    $(format + "Zoom").addEventListener("input", e => {
-        state.zoom = Number(e.target.value);
 
-        $(format + "ZoomValue").textContent =
-            state.zoom.toFixed(2) + "x";
+    // ZOOM
+
+    $(format+"Zoom").addEventListener("input",e=>{
+
+        state.zoom=Number(e.target.value);
+
+        $(format+"ZoomValue").textContent=
+            state.zoom.toFixed(2)+"x";
 
         renderPoster(format);
+
     });
 
-    $(format + "CropX").addEventListener("input", e => {
-        state.cropX = Number(e.target.value);
-        renderPoster(format);
-    });
 
-    $(format + "CropY").addEventListener("input", e => {
-        state.cropY = Number(e.target.value);
-        renderPoster(format);
-    });
+    // CROP X
 
-    $(format + "ResetCrop").addEventListener("click", () => {
-        state.zoom = 1;
-        state.cropX = 0;
-        state.cropY = 0;
+    $(format+"CropX").addEventListener("input",e=>{
 
-        $(format + "Zoom").value = 1;
-        $(format + "CropX").value = 0;
-        $(format + "CropY").value = 0;
-
-        $(format + "ZoomValue").textContent = "1.00x";
+        state.cropX=Number(e.target.value);
 
         renderPoster(format);
+
     });
+
+
+    // CROP Y
+
+    $(format+"CropY").addEventListener("input",e=>{
+
+        state.cropY=Number(e.target.value);
+
+        renderPoster(format);
+
+    });
+
+
+    // RESET CROP
+
+    $(format+"ResetCrop").addEventListener("click",()=>{
+
+        state.zoom=1;
+        state.cropX=0;
+        state.cropY=0;
+
+        $(format+"Zoom").value=1;
+        $(format+"CropX").value=0;
+        $(format+"CropY").value=0;
+
+        $(format+"ZoomValue").textContent="1.00x";
+
+        renderPoster(format);
+
+    });
+
+
+    // LIVE TEXT INPUTS
 
     [
-        format + "Headline",
-        format + "Description",
-        format + "Date"
-    ].forEach(id => {
-        $(id).addEventListener("input", () => {
-            if (id === format + "Description") {
-                const count = getWords($(id).value).length;
-                $(format + "Count").textContent = count + " words";
+        format+"Headline",
+        format+"Description",
+        format+"Date",
+        format+"Brand"
+    ].forEach(id=>{
+
+        $(id).addEventListener("input",()=>{
+
+            if(id===format+"Description"){
+
+                const count=getWords($(id).value).length;
+
+                $(format+"Count").textContent=count+" words";
+
             }
 
             renderPoster(format);
+
         });
+
     });
 
-    $(format + "ResetText").addEventListener("click", () => {
-        $(format + "Headline").value = "";
-        $(format + "Description").value = "";
 
-        $(format + "Count").textContent = "0 words";
+    // RESET TEXT
+
+    $(format+"ResetText").addEventListener("click",()=>{
+
+        $(format+"Headline").value="";
+
+        $(format+"Description").value="";
+
+        $(format+"Count").textContent="0 words";
 
         renderPoster(format);
+
     });
 
-    $(format + "Refresh").addEventListener("click", () => {
+
+    // REFRESH
+
+    $(format+"Refresh").addEventListener("click",()=>{
+
         renderPoster(format);
+
     });
 
-    $(format + "Download").addEventListener("click", () => {
+
+    // DOWNLOAD
+
+    $(format+"Download").addEventListener("click",()=>{
+
         downloadPoster(format);
+
     });
 
-    $(format + "Share").addEventListener("click", () => {
+
+    // SHARE
+
+    $(format+"Share").addEventListener("click",()=>{
+
         sharePoster(format);
+
     });
+
 }
 
+
 setupEditor("story");
+
 setupEditor("feed");
 
+
 renderPoster("story");
+
 renderPoster("feed");
+
 </script>
 
 </body>
