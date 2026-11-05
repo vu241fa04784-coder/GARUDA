@@ -3,9 +3,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover">
-
-<title>THE GARUDA NEWS | Poster Creator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE GARUDA NEWS - Poster Maker</title>
 
 <style>
 * {
@@ -15,161 +14,173 @@
 }
 
 body {
-    font-family: Arial, "Noto Sans Telugu", sans-serif;
+    font-family: Arial, sans-serif;
     background: #eef1f5;
     color: #172033;
-    padding: 14px;
-    touch-action: pan-y pinch-zoom;
+    padding: 16px;
+}
+
+.app {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
 }
 
 header {
     text-align: center;
-    padding: 12px 5px 20px;
+    margin-bottom: 20px;
 }
 
 header h1 {
-    font-size: 25px;
+    color: #142b50;
+    font-size: 27px;
     font-weight: 900;
-    letter-spacing: 1px;
 }
 
 header p {
+    color: #667085;
+    margin-top: 5px;
     font-size: 13px;
-    color: #718096;
-    margin-top: 6px;
 }
 
-.container {
-    width: 100%;
-    max-width: 1100px;
-    margin: auto;
+.editor-layout {
     display: grid;
-    grid-template-columns: 350px minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 22px;
     align-items: start;
 }
 
-.editor, .preview-area {
-    background: #fff;
-    border-radius: 13px;
-    padding: 17px;
-    box-shadow: 0 3px 18px #0000000c;
-    min-width: 0;
+.panel {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px #0000000c;
 }
 
-.editor h2, .preview-area h2 {
+.panel h2 {
     font-size: 19px;
     margin-bottom: 17px;
+    color: #142b50;
 }
 
 .field {
     margin-bottom: 15px;
 }
 
-label {
+.field label {
     display: block;
     font-size: 13px;
     font-weight: 700;
     margin-bottom: 7px;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d9e0e9;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 16px;
-    background: #fff;
-    color: #172033;
-    outline: none;
-}
-
-input:focus, textarea:focus {
-    border-color: #233e68;
-}
-
+input[type="text"],
+input[type="url"],
+textarea,
 input[type="file"] {
-    font-size: 13px;
-    padding: 10px;
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d6dce5;
+    border-radius: 7px;
+    font-size: 14px;
+    background: #fff;
 }
 
 textarea {
     resize: vertical;
-    min-height: 110px;
+    min-height: 125px;
     line-height: 1.5;
 }
 
-#descriptionInput {
-    min-height: 170px;
+input[type="range"] {
+    width: 100%;
+    accent-color: #183d70;
 }
 
-.word-count {
-    font-size: 12px;
-    margin-top: 6px;
+.help {
+    font-size: 11px;
+    color: #7a8493;
+    margin-top: 5px;
+}
+
+.counter {
+    text-align: right;
+    font-size: 11px;
     color: #667085;
+    margin-top: 4px;
+}
+
+.crop-box {
+    background: #f5f7fa;
+    padding: 13px;
+    border-radius: 9px;
+    margin-bottom: 15px;
+}
+
+.crop-box h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
 }
 
 button {
-    width: 100%;
-    border: 0;
-    border-radius: 9px;
-    padding: 14px;
-    margin-top: 9px;
-    font-size: 15px;
-    font-weight: 800;
-    background: #172e55;
-    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
-    min-height: 46px;
-    touch-action: manipulation;
 }
 
-button:active {
-    transform: scale(.99);
+.primary {
+    background: #173d70;
+    color: white;
 }
 
 .secondary {
-    background: #e9eef5;
-    color: #172e55;
+    background: #e9edf3;
+    color: #24364e;
 }
 
-.download-btn {
-    background: #c8202c;
+.buttons {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
-.status {
-    font-size: 12px;
-    color: #526178;
-    line-height: 1.5;
-    margin-top: 12px;
+.buttons button {
+    flex: 1;
+    min-width: 110px;
+}
+
+.preview-panel {
+    text-align: center;
+}
+
+.preview-panel h2 {
+    text-align: left;
 }
 
 /* POSTER */
 
-.preview-area {
-    overflow: hidden;
-}
-
-.poster-wrap {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-}
-
 .poster {
     width: 100%;
+    max-width: 420px;
+    margin: auto;
     aspect-ratio: 9 / 16;
-    background: #fff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 5px 24px #00000020;
+    background: white;
+    box-shadow: 0 5px 25px #00000025;
+    text-align: left;
+    position: relative;
 }
 
-/* PHOTO */
+/* TOP PHOTO: 40% */
 
 .photo-section {
+    width: 100%;
     height: 40%;
     flex: 0 0 40%;
     position: relative;
@@ -177,196 +188,203 @@ button:active {
     background: #dce2e9;
 }
 
-.news-photo {
+.photo-section img#newsPhoto {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
+    object-position: 50% 50%;
+    transform: scale(1);
+    transform-origin: center center;
 }
 
-.brand-banner {
+.photo-placeholder {
     position: absolute;
-    top: 3.5%;
-    left: 0;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 900;
-    letter-spacing: .4px;
-}
-
-.brand-part {
-    height: 100%;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    transform: skew(-22deg);
-    padding: 0 12px;
+    color: #6b7280;
+    font-size: 14px;
+    background: #e9edf2;
 }
 
-.brand-part span {
-    transform: skew(22deg);
-}
+/* BRAND */
 
-.garuda {
-    background: #d71920;
-    margin-left: -5px;
-    padding-left: 17px;
-}
-
-.news {
-    background: #142b50;
-    margin-left: -3px;
-}
-
-.logo {
+.brand-banner {
     position: absolute;
-    width: 52px;
-    height: 52px;
-    right: 12px;
-    bottom: 12px;
-    background: white;
-    border-radius: 9px;
-    padding: 3px;
-    object-fit: contain;
+    left: 0;
+    top: 2%;
+    height: 4.2%;
+    min-height: 22px;
+    display: flex;
+    align-items: stretch;
+    z-index: 3;
+    font-size: clamp(9px, 2.1vw, 15px);
+    font-weight: 900;
+    color: white;
 }
 
-/* NEWS TEXT */
+.brand-garuda {
+    background: #d71920;
+    padding: 0 17px;
+    display: flex;
+    align-items: center;
+    min-width: 105px;
+    clip-path: polygon(0 0, 100% 0, 89% 100%, 0 100%);
+}
+
+.brand-news {
+    background: #10294d;
+    padding: 0 17px;
+    display: flex;
+    align-items: center;
+    min-width: 75px;
+    margin-left: -9px;
+    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%);
+}
+
+/* OPTIONAL LOGO */
+
+.logo-on-photo {
+    position: absolute;
+    width: 13%;
+    height: auto;
+    max-height: 15%;
+    object-fit: contain;
+    bottom: 3%;
+    right: 3%;
+    z-index: 4;
+    display: none;
+}
+
+/* NEWS AREA: 60% */
 
 .content-section {
+    width: 100%;
     height: 60%;
     flex: 0 0 60%;
-    padding: 3.2% 6%;
+    background: #fff;
+    padding: 3.1% 6% 2%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: #fff;
-    overflow: hidden;
+    position: relative;
 }
 
-.headline {
-    font-size: clamp(15px, 4.2vw, 23px);
-    font-weight: 900;
-    line-height: 1.25;
+.news-headline {
     color: #111827;
-    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: clamp(15px, 3.7vw, 25px);
+    line-height: 1.32;
+    margin-bottom: 2.5%;
+    overflow: hidden;
     overflow-wrap: anywhere;
 }
 
-.description {
-    flex: 1;
-    min-height: 0;
-    overflow: hidden;
+.news-description {
+    color: #414a58;
+    font-size: clamp(11px, 2.65vw, 17px);
+    line-height: 1.58;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-    color: #394456;
-    font-size: clamp(11px, 3vw, 16px);
-    line-height: 1.48;
+    overflow: hidden;
+    flex: 1;
 }
 
 /* FOOTER */
 
-.bottom-area {
+.footer {
     margin-top: auto;
+    width: 100%;
     flex-shrink: 0;
 }
 
-.color-line {
-    height: 2px;
-    width: 100%;
-    background: linear-gradient(
-        to right,
-        #e53935 0%, #e53935 25%,
-        #fbc02d 25%, #fbc02d 50%,
-        #1976d2 50%, #1976d2 75%,
-        #2e9d50 75%, #2e9d50 100%
-    );
-    margin-bottom: 7px;
-}
-
-.edition {
-    color: #53677f;
-    font-size: clamp(9px, 2.5vw, 14px);
-    font-weight: 800;
-    margin-bottom: 7px;
-}
-
-.footer {
-    width: 100%;
-    min-height: 29px;
-    background: #f5f7fa;
-    border-radius: 8px;
-    padding: 5px 9px;
+.colour-line {
+    height: 4px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px;
-    color: #142b50;
-    font-size: clamp(7px, 2vw, 11px);
+    width: 100%;
+}
+
+.colour-line span {
+    width: 25%;
+}
+
+.colour-line span:nth-child(1) { background: #e53935; }
+.colour-line span:nth-child(2) { background: #fbc02d; }
+.colour-line span:nth-child(3) { background: #1976d2; }
+.colour-line span:nth-child(4) { background: #2e9d50; }
+
+.edition-date {
+    font-size: clamp(9px, 2vw, 15px);
+    color: #566579;
     font-weight: 800;
+    padding: 2.2% 0 2.3%;
+}
+
+/* FOOTER BAR: BOTH SIDES IN ONE LINE */
+
+.footer-bar {
+    width: 100%;
+    min-height: 28px;
+    border-radius: 7px;
+    background: #f1f3f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 3%;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.share-news {
+    color: #26384f;
+    font-size: clamp(7px, 1.35vw, 11px);
+    font-weight: 800;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .instagram {
-    color: #d71936;
+    color: #c72d45;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: clamp(7px, 1.55vw, 12px);
+    font-weight: 800;
     white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.instagram svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
 /* MOBILE */
 
 @media(max-width: 760px) {
     body {
-        padding: 9px;
+        padding: 10px;
     }
 
-    header {
-        padding: 9px 4px 15px;
+    .editor-layout {
+        grid-template-columns: 1fr;
     }
 
-    header h1 {
-        font-size: 22px;
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-    }
-
-    .editor, .preview-area {
-        width: 100%;
-        padding: 14px;
-    }
-
-    .editor {
-        order: 1;
-    }
-
-    .preview-area {
-        order: 2;
-    }
-
-    .poster-wrap {
-        max-width: 460px;
+    .preview-panel {
+        order: -1;
     }
 
     .poster {
-        width: 100%;
+        max-width: 380px;
     }
 
-    button {
-        min-height: 48px;
-    }
-}
-
-@media(max-width: 360px) {
-    .brand-banner {
-        transform: scale(.85);
-        transform-origin: left top;
-    }
-
-    .footer {
-        font-size: 7px;
+    .panel {
+        padding: 14px;
     }
 }
 </style>
@@ -374,42 +392,77 @@ button:active {
 
 <body>
 
+<div class="app">
+
 <header>
     <h1>THE GARUDA NEWS</h1>
-    <p>Professional Digital News Poster Creator</p>
+    <p>Professional Digital News Poster Maker</p>
 </header>
 
-<main class="container">
+<div class="editor-layout">
 
-<section class="editor">
+<!-- EDITOR -->
 
-    <h2>Create Your News Poster</h2>
+<section class="panel">
+
+    <h2>Poster Editor</h2>
 
     <div class="field">
         <label>Upload News Photo</label>
         <input type="file" id="photoUpload" accept="image/*">
+        <p class="help">Choose a photo from your phone or computer.</p>
     </div>
 
     <div class="field">
-        <label>Or Paste Direct Image URL</label>
-        <input type="url" id="photoUrl" placeholder="https://example.com/image.jpg">
-        <button type="button" class="secondary" id="loadUrlBtn">Load Image URL</button>
+        <label>Or Enter Direct Image URL</label>
+        <input type="url" id="photoUrl" placeholder="https://example.com/photo.jpg">
+        <button type="button" class="secondary" id="loadUrlBtn" style="margin-top:8px;width:100%">
+            Load Image URL
+        </button>
+        <p class="help">Some image hosting links may not work. Uploading directly is recommended.</p>
+    </div>
+
+    <!-- CROP CONTROLS -->
+
+    <div class="crop-box">
+        <h3>Photo Crop & Position</h3>
+
+        <div class="field">
+            <label>Zoom Photo</label>
+            <input type="range" id="cropZoom" min="1" max="3" step="0.05" value="1">
+        </div>
+
+        <div class="field">
+            <label>Move Left / Right</label>
+            <input type="range" id="cropX" min="0" max="100" value="50">
+        </div>
+
+        <div class="field">
+            <label>Move Up / Down</label>
+            <input type="range" id="cropY" min="0" max="100" value="50">
+        </div>
+
+        <button type="button" class="secondary" id="resetCropBtn" style="width:100%">
+            Reset Crop
+        </button>
     </div>
 
     <div class="field">
         <label>Upload Garuda Logo (Optional)</label>
         <input type="file" id="logoUpload" accept="image/*">
+        <p class="help">Logo appears only at the bottom-right of the photo.</p>
     </div>
 
     <div class="field">
         <label>News Headline</label>
-        <textarea id="headlineInput" rows="3" placeholder="Enter your news headline"></textarea>
+        <textarea id="headlineInput" rows="2" placeholder="Enter your Telugu or English headline"></textarea>
     </div>
 
     <div class="field">
-        <label>News Description (Maximum 100 words)</label>
-        <textarea id="descriptionInput" placeholder="Enter your news description"></textarea>
-        <div class="word-count" id="wordCount">0 / 100 words</div>
+        <label>News Description</label>
+        <textarea id="descriptionInput" placeholder="Enter your complete news description..."></textarea>
+        <div class="counter" id="wordCounter">0 / 100 words</div>
+        <p class="help">Maximum 100 words.</p>
     </div>
 
     <div class="field">
@@ -417,614 +470,788 @@ button:active {
         <input type="text" id="dateInput" value="05 NOVEMBER 2026 | ANDHRA PRADESH">
     </div>
 
-    <button type="button" class="download-btn" id="downloadBtn">
-        Download Poster PNG
-    </button>
+    <div class="buttons">
+        <button class="primary" id="downloadBtn">Download PNG</button>
+        <button class="primary" id="shareBtn">Share Poster</button>
+    </div>
 
-    <button type="button" id="shareBtn">
-        Share Poster
-    </button>
+    <div class="buttons">
+        <button class="secondary" id="resetBtn">Reset Poster</button>
+    </div>
 
-    <button type="button" class="secondary" id="resetBtn">
-        Reset Poster
-    </button>
-
-    <p class="status" id="status">
-        Tip: Uploading your photo directly is the most reliable way to export a poster.
-    </p>
+    <p class="help" id="statusMessage" style="margin-top:12px"></p>
 
 </section>
 
-<section class="preview-area">
+<!-- LIVE PREVIEW -->
+
+<section class="panel preview-panel">
 
     <h2>Live Poster Preview</h2>
 
-    <div class="poster-wrap">
-        <div class="poster" id="poster">
+    <div class="poster" id="poster">
 
-            <div class="photo-section">
+        <div class="photo-section" id="photoSection">
 
-                <img id="newsPhoto" class="news-photo"
-                     alt="News photograph"
-                     src="">
-
-                <div class="brand-banner">
-                    <div class="brand-part garuda"><span>GARUDA</span></div>
-                    <div class="brand-part news"><span>NEWS</span></div>
-                </div>
-
-                <img id="garudaLogo" class="logo"
-                     alt="Garuda logo"
-                     style="display:none">
-
+            <div class="photo-placeholder" id="photoPlaceholder">
+                Upload Your News Photo
             </div>
 
-            <div class="content-section">
+            <img id="newsPhoto" alt="News photo" crossorigin="anonymous">
 
-                <h2 class="headline" id="previewHeadline">
-                    మీ వార్త శీర్షిక ఇక్కడ కనిపిస్తుంది
-                </h2>
-
-                <p class="description" id="previewDescription">
-                    మీ వార్త వివరణ ఇక్కడ కనిపిస్తుంది. ఎడమవైపు వివరాలను నమోదు చేయండి.
-                </p>
-
-                <div class="bottom-area">
-
-                    <div class="color-line"></div>
-
-                    <div class="edition" id="previewDate">
-                        05 NOVEMBER 2026 | ANDHRA PRADESH
-                    </div>
-
-                    <div class="footer">
-                        <span>Share Your News: 8500781269</span>
-                        <span class="instagram">
-    <svg width="14" height="14" viewBox="0 0 24 24"
-         fill="none" stroke="#E1306C" stroke-width="2.2"
-         stroke-linecap="round" stroke-linejoin="round"
-         style="vertical-align:middle">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1" fill="#E1306C" stroke="none"/>
-    </svg>
-    @thegaruda_news
-</span>
-                    </div>
-
-                </div>
-
+            <div class="brand-banner">
+                <div class="brand-garuda">GARUDA</div>
+                <div class="brand-news">NEWS</div>
             </div>
+
+            <img id="logoPreview" class="logo-on-photo" alt="Garuda logo">
+
         </div>
+
+        <div class="content-section">
+
+            <div class="news-headline" id="headlinePreview">
+                Your News Headline Appears Here
+            </div>
+
+            <div class="news-description" id="descriptionPreview">
+                Your news description will appear here. Enter your news in the editor to see the live preview.
+            </div>
+
+            <div class="footer">
+
+                <div class="colour-line">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="edition-date" id="datePreview">
+                    05 NOVEMBER 2026 | ANDHRA PRADESH
+                </div>
+
+                <div class="footer-bar">
+
+                    <span class="share-news">
+                        SHARE YOUR NEWS - 8500781269
+                    </span>
+
+                    <span class="instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                        </svg>
+                        @thegaruda_news
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
 
-</main>
+</div>
+</div>
 
 <script>
 const $ = id => document.getElementById(id);
 
 let photoData = null;
 let logoData = null;
+let photoImage = null;
+let logoImage = null;
 
-const defaultDate = "05 NOVEMBER 2026 | ANDHRA PRADESH";
+let cropZoom = 1;
+let cropX = 50;
+let cropY = 50;
 
-function countWords(text) {
-    return text.trim()
-        ? text.trim().split(/\s+/).length
-        : 0;
+const MAX_WORDS = 100;
+
+function countWords(value) {
+    return value.trim() ? value.trim().split(/\s+/).length : 0;
 }
 
+function updateCounter() {
+    const words = countWords($("descriptionInput").value);
+    $("wordCounter").textContent = `${words} / ${MAX_WORDS} words`;
+}
+
+function showStatus(message, isError = false) {
+    $("statusMessage").textContent = message;
+    $("statusMessage").style.color = isError ? "#b42318" : "#16803c";
+}
+
+function updateCrop() {
+    const photo = $("newsPhoto");
+
+    photo.style.objectPosition = `${cropX}% ${cropY}%`;
+    photo.style.transform = `scale(${cropZoom})`;
+    photo.style.transformOrigin = "center center";
+}
+
+function resetCrop() {
+    cropZoom = 1;
+    cropX = 50;
+    cropY = 50;
+
+    $("cropZoom").value = 1;
+    $("cropX").value = 50;
+    $("cropY").value = 50;
+
+    updateCrop();
+}
+
+function setPhoto(data, image) {
+    photoData = data;
+    photoImage = image;
+
+    $("newsPhoto").src = data;
+    $("photoPlaceholder").style.display = "none";
+
+    resetCrop();
+    updatePreview();
+}
+
+function loadImage(source) {
+    return new Promise((resolve, reject) => {
+        const image = new Image();
+
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error("Unable to load image"));
+
+        image.src = source;
+    });
+}
+
+// PHOTO UPLOAD
+
+$("photoUpload").addEventListener("change", async event => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    try {
+        const data = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+
+        const image = await loadImage(data);
+
+        setPhoto(data, image);
+        $("photoUrl").value = "";
+
+        showStatus("Photo uploaded successfully.");
+
+    } catch (error) {
+        showStatus("Unable to load this photo.", true);
+    }
+});
+
+// IMAGE URL
+
+$("loadUrlBtn").addEventListener("click", async () => {
+    const url = $("photoUrl").value.trim();
+
+    if (!url) {
+        showStatus("Please enter an image URL.", true);
+        return;
+    }
+
+    try {
+        const image = await loadImage(url);
+
+        const testCanvas = document.createElement("canvas");
+        testCanvas.width = 1;
+        testCanvas.height = 1;
+
+        const testContext = testCanvas.getContext("2d");
+        testContext.drawImage(image, 0, 0, 1, 1);
+        testCanvas.toDataURL();
+
+        setPhoto(url, image);
+        showStatus("Image URL loaded successfully.");
+
+    } catch (error) {
+        showStatus("Image URL failed. Try uploading the photo directly.", true);
+    }
+});
+
+// LOGO UPLOAD
+
+$("logoUpload").addEventListener("change", async event => {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    try {
+        const data = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+
+        const image = await loadImage(data);
+
+        logoData = data;
+        logoImage = image;
+
+        $("logoPreview").src = data;
+        $("logoPreview").style.display = "block";
+
+        updatePreview();
+        showStatus("Logo uploaded successfully.");
+
+    } catch (error) {
+        showStatus("Unable to load logo.", true);
+    }
+});
+
+// CROP CONTROLS
+
+$("cropZoom").addEventListener("input", event => {
+    cropZoom = Number(event.target.value);
+    updateCrop();
+});
+
+$("cropX").addEventListener("input", event => {
+    cropX = Number(event.target.value);
+    updateCrop();
+});
+
+$("cropY").addEventListener("input", event => {
+    cropY = Number(event.target.value);
+    updateCrop();
+});
+
+$("resetCropBtn").addEventListener("click", resetCrop);
+
+// LIVE TEXT PREVIEW
+
 function updatePreview() {
-    $("previewHeadline").textContent =
-        $("headlineInput").value.trim() ||
-        "మీ వార్త శీర్షిక ఇక్కడ కనిపిస్తుంది";
+    const headline = $("headlineInput").value.trim();
+    const description = $("descriptionInput").value.trim();
+    const date = $("dateInput").value.trim();
 
-    $("previewDescription").textContent =
-        $("descriptionInput").value.trim() ||
-        "మీ వార్త వివరణ ఇక్కడ కనిపిస్తుంది.";
+    $("headlinePreview").textContent =
+        headline || "Your News Headline Appears Here";
 
-    $("previewDate").textContent =
-        $("dateInput").value.trim() || "THE GARUDA NEWS";
+    $("descriptionPreview").textContent =
+        description || "Your news description will appear here.";
 
-    const count = countWords($("descriptionInput").value);
+    $("datePreview").textContent =
+        date || "THE GARUDA NEWS";
 
-    $("wordCount").textContent = count + " / 100 words";
-    $("wordCount").style.color =
-        count > 100 ? "#d71920" : "#667085";
+    updateCounter();
 }
 
 ["headlineInput", "descriptionInput", "dateInput"].forEach(id => {
     $(id).addEventListener("input", updatePreview);
 });
 
-/* READ LOCAL FILE AS DATA URL */
+$("descriptionInput").addEventListener("input", event => {
+    const words = event.target.value.trim().split(/\s+/).filter(Boolean);
 
-function readFile(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = () => reject(new Error("File could not be read"));
-
-        reader.readAsDataURL(file);
-    });
-}
-
-/* PHOTO UPLOAD */
-
-$("photoUpload").addEventListener("change", async function() {
-    const file = this.files[0];
-    if (!file) return;
-
-    try {
-        photoData = await readFile(file);
-        $("newsPhoto").src = photoData;
-        $("photoUrl").value = "";
-        $("status").textContent = "News photo uploaded successfully.";
-    } catch (error) {
-        $("status").textContent = error.message;
+    if (words.length > MAX_WORDS) {
+        event.target.value = words.slice(0, MAX_WORDS).join(" ");
     }
+
+    updatePreview();
 });
 
-/* LOGO UPLOAD */
+// CANVAS EXPORT
 
-$("logoUpload").addEventListener("change", async function() {
-    const file = this.files[0];
-    if (!file) return;
+const CANVAS_WIDTH = 1080;
+const CANVAS_HEIGHT = 1920;
+const PHOTO_HEIGHT = 768;
+const CONTENT_HEIGHT = 1152;
 
-    try {
-        logoData = await readFile(file);
-        $("garudaLogo").src = logoData;
-        $("garudaLogo").style.display = "block";
-        $("status").textContent = "Garuda logo uploaded successfully.";
-    } catch (error) {
-        $("status").textContent = error.message;
-    }
-});
+function drawCoverImage(ctx, image, x, y, width, height) {
+    const baseScale = Math.max(
+        width / image.width,
+        height / image.height
+    );
 
-/* LOAD IMAGE URL */
+    const drawWidth = image.width * baseScale;
+    const drawHeight = image.height * baseScale;
 
-$("loadUrlBtn").addEventListener("click", async function() {
-    const url = $("photoUrl").value.trim();
-
-    if (!url) {
-        alert("Please enter an image URL.");
-        return;
-    }
-
-    try {
-        $("status").textContent = "Loading image...";
-
-        const response = await fetch(url, { mode: "cors" });
-
-        if (!response.ok) throw new Error("Image could not be fetched.");
-
-        const blob = await response.blob();
-
-        if (!blob.type.startsWith("image/")) {
-            throw new Error("The URL does not point to an image.");
-        }
-
-        photoData = await readFile(blob);
-        $("newsPhoto").src = photoData;
-
-        $("status").textContent = "Image loaded successfully.";
-    } catch (error) {
-        $("status").textContent =
-            "This image host may block access. Please download the photo and upload it directly.";
-        alert("Image URL could not be used. Please upload the image directly.");
-    }
-});
-
-/* DRAW TEXT WRAPPING */
-
-function splitLines(ctx, text, maxWidth) {
-    const lines = [];
-
-    text.split("\n").forEach(paragraph => {
-        const words = paragraph.trim().split(/\s+/);
-        let line = "";
-
-        words.forEach(word => {
-            const test = line ? line + " " + word : word;
-
-            if (ctx.measureText(test).width > maxWidth && line) {
-                lines.push(line);
-                line = word;
-            } else {
-                line = test;
-            }
-        });
-
-        if (line) lines.push(line);
-        lines.push("");
-    });
-
-    if (lines[lines.length - 1] === "") lines.pop();
-
-    return lines;
-}
-
-function drawBanner(ctx) {
-    const y = 27;
-    const h = 42;
+    const dx = x + (width - drawWidth) * (cropX / 100);
+    const dy = y + (height - drawHeight) * (cropY / 100);
 
     ctx.save();
 
-    // GARUDA red panel
-    ctx.fillStyle = "#d71920";
     ctx.beginPath();
-    ctx.moveTo(-8, y);
-    ctx.lineTo(230, y);
-    ctx.lineTo(208, y + h);
-    ctx.lineTo(-8, y + h);
-    ctx.closePath();
-    ctx.fill();
+    ctx.rect(x, y, width, height);
+    ctx.clip();
 
-    // NEWS blue panel
-    ctx.fillStyle = "#142b50";
-    ctx.beginPath();
-    ctx.moveTo(216, y);
-    ctx.lineTo(355, y);
-    ctx.lineTo(333, y + h);
-    ctx.lineTo(194, y + h);
-    ctx.closePath();
-    ctx.fill();
+    const centerX = x + width / 2;
+    const centerY = y + height / 2;
 
-    ctx.fillStyle = "#ffffff";
-    ctx.textBaseline = "middle";
-    ctx.font = "bold 27px Arial";
-    ctx.fillText("GARUDA", 17, y + h / 2);
+    ctx.translate(centerX, centerY);
+    ctx.scale(cropZoom, cropZoom);
+    ctx.translate(-centerX, -centerY);
 
-    ctx.font = "bold 25px Arial";
-    ctx.fillText("NEWS", 236, y + h / 2);
+    ctx.drawImage(image, dx, dy, drawWidth, drawHeight);
 
     ctx.restore();
 }
 
-function drawImageCover(ctx, img, x, y, w, h) {
-    const scale = Math.max(w / img.width, h / img.height);
-    const sw = img.width * scale;
-    const sh = img.height * scale;
+function drawBrand(ctx) {
+    const top = 45;
+    const height = 42;
+
+    ctx.save();
+
+    ctx.fillStyle = "#d71920";
+    ctx.beginPath();
+    ctx.moveTo(0, top);
+    ctx.lineTo(230, top);
+    ctx.lineTo(205, top + height);
+    ctx.lineTo(0, top + height);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = "#10294d";
+    ctx.beginPath();
+    ctx.moveTo(205, top);
+    ctx.lineTo(355, top);
+    ctx.lineTo(335, top + height);
+    ctx.lineTo(185, top + height);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "900 25px Arial";
+    ctx.textBaseline = "middle";
+    ctx.fillText("GARUDA", 18, top + height / 2);
+    ctx.fillText("NEWS", 236, top + height / 2);
+
+    ctx.restore();
+}
+
+function drawLogo(ctx) {
+    if (!logoImage) return;
+
+    const maxWidth = 140;
+    const maxHeight = 110;
+
+    const scale = Math.min(
+        maxWidth / logoImage.width,
+        maxHeight / logoImage.height
+    );
+
+    const width = logoImage.width * scale;
+    const height = logoImage.height * scale;
 
     ctx.drawImage(
-        img,
-        x + (w - sw) / 2,
-        y + (h - sh) / 2,
-        sw,
-        sh
+        logoImage,
+        CANVAS_WIDTH - width - 30,
+        PHOTO_HEIGHT - height - 25,
+        width,
+        height
     );
 }
 
-function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
+function wrapText(ctx, text, maxWidth) {
+    const paragraphs = text.split("\n");
+    const lines = [];
+
+    paragraphs.forEach(paragraph => {
+        if (!paragraph.trim()) {
+            lines.push("");
+            return;
+        }
+
+        const words = paragraph.split(/\s+/);
+        let line = "";
+
+        words.forEach(word => {
+            const testLine = line ? line + " " + word : word;
+
+            if (ctx.measureText(testLine).width > maxWidth && line) {
+                lines.push(line);
+                line = word;
+            } else {
+                line = testLine;
+            }
+        });
+
+        if (line) lines.push(line);
+    });
+
+    return lines;
 }
 
-/* CREATE FULL POSTER */
+function drawFittedText(ctx, text, x, y, width, height, options) {
+    const {
+        maxSize,
+        minSize,
+        weight,
+        lineMultiplier,
+        color
+    } = options;
+
+    let fontSize = maxSize;
+    let lines = [];
+    let lineHeight = 0;
+
+    while (fontSize >= minSize) {
+        ctx.font = `${weight} ${fontSize}px "Noto Sans Telugu", "Nirmala UI", Arial, sans-serif`;
+
+        lines = wrapText(ctx, text, width);
+        lineHeight = fontSize * lineMultiplier;
+
+        if (lines.length * lineHeight <= height) {
+            break;
+        }
+
+        fontSize -= 1;
+    }
+
+    ctx.font = `${weight} ${fontSize}px "Noto Sans Telugu", "Nirmala UI", Arial, sans-serif`;
+    ctx.fillStyle = color;
+    ctx.textBaseline = "top";
+
+    lines.forEach((line, index) => {
+        if (y + (index + 1) * lineHeight <= y + height + 1) {
+            ctx.fillText(line, x, y + index * lineHeight, width);
+        }
+    });
+
+    return {
+        fontSize,
+        lines: lines.length,
+        usedHeight: lines.length * lineHeight
+    };
+}
 
 async function makePoster() {
-    const wordCount = countWords($("descriptionInput").value);
+    if (!photoImage) {
+        showStatus("Please upload a news photo first.", true);
+        throw new Error("Photo missing");
+    }
 
-    if (wordCount > 100) {
-        alert("Description must be 100 words or less.");
-        throw new Error("Too many words");
+    const headline = $("headlineInput").value.trim();
+    const description = $("descriptionInput").value.trim();
+    const date = $("dateInput").value.trim();
+
+    if (!headline) {
+        showStatus("Please enter a news headline.", true);
+        throw new Error("Headline missing");
+    }
+
+    if (!description) {
+        showStatus("Please enter the news description.", true);
+        throw new Error("Description missing");
+    }
+
+    if (countWords(description) > MAX_WORDS) {
+        showStatus("Description must not exceed 100 words.", true);
+        throw new Error("Description too long");
     }
 
     const canvas = document.createElement("canvas");
-    canvas.width = 1080;
-    canvas.height = 1920;
+    canvas.width = CANVAS_WIDTH;
+    canvas.height = CANVAS_HEIGHT;
 
     const ctx = canvas.getContext("2d");
 
     ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, 1080, 1920);
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    // PHOTO: 40%
-    const photoHeight = 768;
+    // PHOTO: EXACTLY 40%
 
-    if (photoData) {
-        const photo = await loadImage(photoData);
-        drawImageCover(ctx, photo, 0, 0, 1080, photoHeight);
-    } else {
-        ctx.fillStyle = "#dce2e9";
-        ctx.fillRect(0, 0, 1080, photoHeight);
+    drawCoverImage(
+        ctx,
+        photoImage,
+        0,
+        0,
+        CANVAS_WIDTH,
+        PHOTO_HEIGHT
+    );
 
-        ctx.fillStyle = "#53677f";
-        ctx.textAlign = "center";
-        ctx.font = "bold 38px Arial";
-        ctx.fillText("YOUR NEWS PHOTO", 540, 390);
-        ctx.textAlign = "left";
-    }
+    drawBrand(ctx);
+    drawLogo(ctx);
 
-    // BRANDING
-    drawBanner(ctx);
+    // NEWS: EXACTLY 60%
 
-    // LOGO
-    if (logoData) {
-        try {
-            const logo = await loadImage(logoData);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(
+        0,
+        PHOTO_HEIGHT,
+        CANVAS_WIDTH,
+        CONTENT_HEIGHT
+    );
 
-            ctx.fillStyle = "#ffffff";
-            roundRect(ctx, 965, 680, 85, 70, 10);
-            ctx.fill();
-
-            ctx.drawImage(logo, 973, 686, 69, 58);
-        } catch (error) {
-            console.warn("Logo could not be drawn", error);
-        }
-    }
-
-    // WHITE CONTENT SECTION
     const left = 65;
-    const maxWidth = 950;
+    const right = 65;
+    const textWidth = CANVAS_WIDTH - left - right;
 
-    const headline = $("headlineInput").value.trim() ||
-        "మీ వార్త శీర్షిక ఇక్కడ కనిపిస్తుంది";
+    const headlineTop = 815;
+    const headlineHeight = 260;
 
-    let headlineSize = 62;
-    let headlineLines = [];
-
-    while (headlineSize >= 35) {
-        ctx.font = "900 " + headlineSize + "px 'Noto Sans Telugu', Arial";
-        headlineLines = splitLines(ctx, headline, maxWidth);
-
-        if (headlineLines.length <= 3) break;
-        headlineSize -= 2;
-    }
-
-    ctx.fillStyle = "#111827";
-    ctx.font = "900 " + headlineSize + "px 'Noto Sans Telugu', Arial";
-    ctx.textBaseline = "top";
-
-    let y = 815;
-
-    headlineLines.forEach(line => {
-        ctx.fillText(line, left, y);
-        y += headlineSize * 1.25;
-    });
-
-    y += 15;
-
-    // DESCRIPTION: AUTO-FIT
-    const description = $("descriptionInput").value.trim() ||
-        "మీ వార్త వివరణ ఇక్కడ కనిపిస్తుంది.";
-
-    const bottomLimit = 1645;
-    const availableHeight = bottomLimit - y;
-
-    let fontSize = 40;
-    let lines = [];
-
-    while (fontSize >= 15) {
-        ctx.font = fontSize + "px 'Noto Sans Telugu', Arial";
-        lines = splitLines(ctx, description, maxWidth);
-
-        if (lines.length * fontSize * 1.48 <= availableHeight) {
-            break;
+    const headlineResult = drawFittedText(
+        ctx,
+        headline,
+        left,
+        headlineTop,
+        textWidth,
+        headlineHeight,
+        {
+            maxSize: 53,
+            minSize: 28,
+            weight: 900,
+            lineMultiplier: 1.32,
+            color: "#111827"
         }
+    );
 
-        fontSize--;
-    }
+    const descriptionTop = headlineTop + headlineResult.usedHeight + 35;
+    const footerLineY = 1680;
+    const descriptionHeight = footerLineY - descriptionTop - 30;
 
-    if (fontSize < 15) {
-        throw new Error("Description does not fit. Please shorten the headline or description.");
-    }
-
-    ctx.fillStyle = "#394456";
-    ctx.font = fontSize + "px 'Noto Sans Telugu', Arial";
-
-    const lineHeight = fontSize * 1.48;
-
-    lines.forEach(line => {
-        if (line) {
-            ctx.fillText(line, left, y);
+    drawFittedText(
+        ctx,
+        description,
+        left,
+        descriptionTop,
+        textWidth,
+        descriptionHeight,
+        {
+            maxSize: 39,
+            minSize: 21,
+            weight: 500,
+            lineMultiplier: 1.55,
+            color: "#414a58"
         }
-        y += lineHeight;
-    });
+    );
 
     // FOUR COLOUR LINE
-    const lineY = 1680;
-    const colours = [
-        "#e53935",
-        "#fbc02d",
-        "#1976d2",
-        "#2e9d50"
-    ];
+
+    const colours = ["#e53935", "#fbc02d", "#1976d2", "#2e9d50"];
+    const lineY = footerLineY;
+    const lineHeight = 5;
+    const segmentWidth = CANVAS_WIDTH / 4;
 
     colours.forEach((colour, index) => {
         ctx.fillStyle = colour;
-        ctx.fillRect(index * 270, lineY, 270, 4);
+        ctx.fillRect(index * segmentWidth, lineY, segmentWidth, lineHeight);
     });
 
     // DATE
-    ctx.fillStyle = "#53677f";
-    ctx.font = "bold 30px Arial";
+
+    ctx.fillStyle = "#566579";
+    ctx.font = '800 28px Arial, "Nirmala UI", sans-serif';
     ctx.textBaseline = "top";
-    ctx.textAlign = "left";
+    ctx.fillText(date || "THE GARUDA NEWS", 65, 1705);
 
-    ctx.fillText(
-        $("dateInput").value.trim() || "THE GARUDA NEWS",
-        left,
-        1702,
-        950
-    );
+    // FOOTER BAR
 
-    // FOOTER
-    ctx.fillStyle = "#f5f7fa";
-    roundRect(ctx, 55, 1760, 970, 52, 14);
+    ctx.fillStyle = "#f1f3f6";
+
+    const barX = 55;
+    const barY = 1755;
+    const barWidth = 970;
+    const barHeight = 52;
+
+    ctx.beginPath();
+    ctx.roundRect(barX, barY, barWidth, barHeight, 12);
     ctx.fill();
 
-    ctx.fillStyle = "#142b50";
-    ctx.font = "bold 23px Arial";
-    ctx.textAlign = "left";
-    ctx.fillText("TIP-LINE: 8500781269", 80, 1776);
+    // SMALLER SINGLE-LINE SHARE TEXT
 
-    ctx.fillStyle = "#df1528";
-    ctx.font = "bold 22px Arial";
-    ctx.textAlign = "right";
-    ctx.fillText("@thegaruda_news", 1000, 1776);
+    ctx.fillStyle = "#26384f";
+    ctx.font = "800 17px Arial";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(
+        "SHARE YOUR NEWS - 8500781269",
+        75,
+        barY + barHeight / 2
+    );
+
+    // INSTAGRAM ICON
+
+    const iconX = 795;
+    const iconY = barY + 15;
+
+    ctx.save();
+    ctx.strokeStyle = "#c72d45";
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+    ctx.roundRect(iconX, iconY, 20, 20, 5);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(iconX + 10, iconY + 10, 4, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(iconX + 15, iconY + 5, 1.3, 0, Math.PI * 2);
+    ctx.fillStyle = "#c72d45";
+    ctx.fill();
+
+    ctx.restore();
+
+    ctx.fillStyle = "#c72d45";
+    ctx.font = "800 22px Arial";
+    ctx.fillText("@thegaruda_news", 825, barY + barHeight / 2);
 
     return canvas;
 }
 
-function loadImage(src) {
-    return new Promise((resolve, reject) => {
-        const img = new Image();
+// DOWNLOAD PNG
 
-        img.onload = () => resolve(img);
-        img.onerror = () => reject(new Error("Image loading failed"));
+$("downloadBtn").addEventListener("click", async () => {
+    try {
+        showStatus("Creating your poster...");
 
-        img.src = src;
-    });
-}
+        const canvas = await makePoster();
 
-function canvasToBlob(canvas) {
-    return new Promise((resolve, reject) => {
         canvas.toBlob(blob => {
-            if (blob) resolve(blob);
-            else reject(new Error("PNG creation failed"));
-        }, "image/png");
-    });
-}
+            if (!blob) {
+                showStatus("Unable to create PNG.", true);
+                return;
+            }
 
-/* DOWNLOAD - MOBILE FRIENDLY */
-
-async function downloadPoster() {
-    const button = $("downloadBtn");
-
-    try {
-        button.disabled = true;
-        button.textContent = "Creating Poster...";
-        $("status").textContent = "Preparing your PNG poster...";
-
-        const canvas = await makePoster();
-        const blob = await canvasToBlob(canvas);
-
-        const fileURL = URL.createObjectURL(blob);
-
-        const link = document.createElement("a");
-        link.href = fileURL;
-        link.download = "THE-GARUDA-NEWS.png";
-        link.style.display = "none";
-
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-
-        $("status").textContent =
-            "Poster created. If it did not download automatically, use Share Poster or open the image to save it.";
-
-        // Keep the URL alive briefly for mobile browsers.
-        setTimeout(() => URL.revokeObjectURL(fileURL), 60000);
-
-    } catch (error) {
-        console.error(error);
-
-        $("status").textContent =
-            "Download failed: " + error.message;
-
-        alert("Could not download poster. " + error.message);
-
-    } finally {
-        button.disabled = false;
-        button.textContent = "Download Poster PNG";
-    }
-}
-
-/* SHARE - ANDROID / IOS */
-
-async function sharePoster() {
-    const button = $("shareBtn");
-
-    try {
-        button.disabled = true;
-        button.textContent = "Preparing...";
-
-        const canvas = await makePoster();
-        const blob = await canvasToBlob(canvas);
-
-        const file = new File(
-            [blob],
-            "THE-GARUDA-NEWS.png",
-            { type: "image/png" }
-        );
-
-        if (
-            navigator.share &&
-            navigator.canShare &&
-            navigator.canShare({ files: [file] })
-        ) {
-            await navigator.share({
-                files: [file],
-                title: "THE GARUDA NEWS",
-                text: "Latest news from THE GARUDA NEWS"
-            });
-
-            $("status").textContent = "Share window opened.";
-
-        } else {
             const url = URL.createObjectURL(blob);
-            window.open(url, "_blank");
+            const link = document.createElement("a");
 
-            $("status").textContent =
-                "Image opened in a new tab. Long-press the image and select Save Image.";
+            link.href = url;
+            link.download = "THE-GARUDA-NEWS.png";
 
-            setTimeout(() => URL.revokeObjectURL(url), 120000);
-        }
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 60000);
+
+            showStatus("Poster downloaded successfully!");
+
+        }, "image/png");
 
     } catch (error) {
-        if (error.name !== "AbortError") {
-            console.error(error);
-            $("status").textContent =
-                "Sharing failed. Please try Download Poster PNG.";
+        if (![
+            "Photo missing",
+            "Headline missing",
+            "Description missing",
+            "Description too long"
+        ].includes(error.message)) {
+            showStatus("Something went wrong while creating the poster.", true);
         }
-
-    } finally {
-        button.disabled = false;
-        button.textContent = "Share Poster";
     }
-}
+});
 
-/* RESET */
+// SHARE POSTER
 
-function resetPoster() {
+$("shareBtn").addEventListener("click", async () => {
+    try {
+        const canvas = await makePoster();
+
+        canvas.toBlob(async blob => {
+            if (!blob) {
+                showStatus("Unable to create poster.", true);
+                return;
+            }
+
+            const file = new File(
+                [blob],
+                "THE-GARUDA-NEWS.png",
+                { type: "image/png" }
+            );
+
+            if (
+                navigator.share &&
+                navigator.canShare &&
+                navigator.canShare({ files: [file] })
+            ) {
+                try {
+                    await navigator.share({
+                        title: "THE GARUDA NEWS",
+                        text: "News from THE GARUDA NEWS",
+                        files: [file]
+                    });
+
+                    showStatus("Share menu opened.");
+
+                } catch (error) {
+                    if (error.name !== "AbortError") {
+                        showStatus("Sharing was not completed.", true);
+                    }
+                }
+
+            } else {
+                const url = URL.createObjectURL(blob);
+                const newTab = window.open(url, "_blank");
+
+                if (!newTab) {
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = "THE-GARUDA-NEWS.png";
+                    link.click();
+                }
+
+                setTimeout(() => URL.revokeObjectURL(url), 60000);
+
+                showStatus("Poster opened. Save or share the image from your browser.");
+            }
+        }, "image/png");
+
+    } catch (error) {
+        if (![
+            "Photo missing",
+            "Headline missing",
+            "Description missing",
+            "Description too long"
+        ].includes(error.message)) {
+            showStatus("Unable to share poster.", true);
+        }
+    }
+});
+
+// RESET POSTER
+
+$("resetBtn").addEventListener("click", () => {
     $("photoUpload").value = "";
-    $("logoUpload").value = "";
     $("photoUrl").value = "";
+    $("logoUpload").value = "";
 
     $("headlineInput").value = "";
     $("descriptionInput").value = "";
-    $("dateInput").value = defaultDate;
+    $("dateInput").value = "05 NOVEMBER 2026 | ANDHRA PRADESH";
 
     photoData = null;
     logoData = null;
+    photoImage = null;
+    logoImage = null;
 
     $("newsPhoto").removeAttribute("src");
-    $("garudaLogo").removeAttribute("src");
-    $("garudaLogo").style.display = "none";
+    $("photoPlaceholder").style.display = "flex";
 
-    $("status").textContent = "Poster reset successfully.";
+    $("logoPreview").removeAttribute("src");
+    $("logoPreview").style.display = "none";
 
+    resetCrop();
     updatePreview();
-}
 
-$("downloadBtn").addEventListener("click", downloadPoster);
-$("shareBtn").addEventListener("click", sharePoster);
-$("resetBtn").addEventListener("click", resetPoster);
+    showStatus("Poster has been reset.");
+});
+
+// INITIALIZE
 
 updatePreview();
+resetCrop();
 
 </script>
 
